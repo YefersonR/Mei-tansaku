@@ -1,2 +1,0 @@
-# Mei-tansaku
-
