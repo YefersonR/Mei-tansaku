@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Mei-tensaku.WebApi.props" />
+</Project>

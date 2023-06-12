@@ -1,0 +1,15 @@
+C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Core.Application\bin\Debug\net7.0\Core.Application.deps.json
+C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Core.Application\bin\Debug\net7.0\Core.Application.dll
+C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Core.Application\bin\Debug\net7.0\Core.Application.pdb
+C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Core.Application\bin\Debug\net7.0\Core.Domain.dll
+C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Core.Application\bin\Debug\net7.0\Core.Domain.pdb
+C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Core.Application\obj\Debug\net7.0\Core.Application.csproj.AssemblyReference.cache
+C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Core.Application\obj\Debug\net7.0\Core.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Core.Application\obj\Debug\net7.0\Core.Application.AssemblyInfoInputs.cache
+C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Core.Application\obj\Debug\net7.0\Core.Application.AssemblyInfo.cs
+C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Core.Application\obj\Debug\net7.0\Core.Application.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Core.Application\obj\Debug\net7.0\Core.Application.csproj.CopyComplete
+C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Core.Application\obj\Debug\net7.0\Core.Application.dll
+C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Core.Application\obj\Debug\net7.0\refint\Core.Application.dll
+C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Core.Application\obj\Debug\net7.0\Core.Application.pdb
+C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Core.Application\obj\Debug\net7.0\ref\Core.Application.dll
