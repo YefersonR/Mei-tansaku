@@ -1,0 +1,37 @@
+<div class="bg-sky-900">
+  <a [routerLink]="['/']">
+    <img src="./assets/meitensaku.png" class="m-auto w-40 h-24" alt="">
+  </a>
+</div>
+<div class="flex flex-col items-center h-full mt-10 mx-auto w-10/12">
+  <div class="w-3/4 m-auto">
+    <p class="text-4xl font-medium text-center">Sign in</p>
+    <form [formGroup]="formLogin" (submit)="login()" class="mt-5 mx-5 p-4" >
+      <div class="w-1/2 mx-auto">
+        <input class="outline-none" id="user" formControlName="user" type="text" placeholder="E-mail or username">
+        <span
+          *ngIf="formLogin.get('user')?.errors?.['required'] && formLogin.get('user')?.touched">
+          <p class="text-red-600">El campo usuario es requerido</p>
+        </span>
+        <input class="outline-none" id="password" formControlName="password" type="password" placeholder="Password" >
+        <span
+          *ngIf="formLogin.get('password')?.errors?.['required'] && formLogin.get('password')?.touched">
+          <p class="text-red-600">La contraseña es requerida</p>
+        </span>
+      </div>
+      <div class="m-auto w-2/4">
+        <button [disabled]="formLogin.invalid" [ngClass]="formLogin.invalid ? 'bg-gray-300': 'bg-blue-500 hover:bg-blue-600' " class="rounded-full w-full mt-4  p-3  text-white text-lg font-semibold">Log In</button>
+      </div>
+    </form>
+  </div>
+  <hr class="my-4 w-1/3 mx-auto h-0.5 bg-gray-400">
+  <div class="flex flex-col w-1/3 m-auto">
+    <button class="rounded-full bg-blue-800 hover:bg-blue-900 p-3 mb-1 text-white text-lg font-semibold" >Sign with Facebook</button>
+    <button class=" rounded-full p-3 border-solid hover:bg-slate-100 border-2 border-gray-500 text-lg font-semibold">Sign with Google</button>
+  </div>
+</div>
+<div class="w-full mt-28">
+  <hr class="my-4 w-full mx-auto h-0.5 bg-gray-300">
+  <p class="w-3/4 m-auto text-center font-extralight ">Copyright © 2023 Mei-Tansaku. Todos los derechos reservados</p>
+
+</div>
