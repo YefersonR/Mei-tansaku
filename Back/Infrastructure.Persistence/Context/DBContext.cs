@@ -1,4 +1,5 @@
-﻿using Core.Domain.Entities;
+﻿using Core.Domain.Common;
+using Core.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,25 @@ namespace Infrastructure.Persistence.Context
         public DbSet<Value_Attribute> Value_Attribute{ get; set; }
         public DBContext(DbContextOptions options):base(options) {}
 
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+        {
+            foreach (var entry in ChangeTracker.Entries<AuditableEntity>())
+            {
+                switch (entry.State)
+                {
+                    case EntityState.Added:
+                        entry.Entity.CreatedDate = DateTime.Now;
+                        entry.Entity.CreatedBy = "Admins";
+                        break;
+                    case EntityState.Modified:
+                        entry.Entity.LastUpdatedDate = DateTime.Now;
+                        entry.Entity.LastUpdatedBy = "Admin";
+                        break;
+                }
+            }
+            return base.SaveChangesAsync(cancellationToken);
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             #region Tables
@@ -54,6 +74,7 @@ namespace Infrastructure.Persistence.Context
             modelBuilder.Entity<Value_Attribute>().ToTable("Value_attribute");
 
             #endregion
+            
             #region Primary Keys
             
             modelBuilder.Entity<Attribute_Category>().HasKey(attributeCategory => attributeCategory.ID);
@@ -78,8 +99,82 @@ namespace Infrastructure.Persistence.Context
             #endregion
 
             #region Relationships
+            modelBuilder.Entity<Attribute_Category>()
+                .HasMany(value => value.Value_Attributes)
+                .WithOne(attribute => attribute.Attribute_Category)
+                .HasForeignKey(attribute => attribute.AttributeCategoryID)
+                .OnDelete(DeleteBehavior.Cascade);
+            
+            modelBuilder.Entity<Category>()
+                .HasMany(category => category.Attribute_Categories)
+                .WithOne(attribute => attribute.Category)
+                .HasForeignKey(attribute => attribute.CategoryID)
+                .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<Category>()
+                .HasMany(category => category.Products)
+                .WithOne(product => product.Category)
+                .HasForeignKey(product => product.CategoryID)
+                .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<Product>()
+                .HasMany(product=>product.Comments)
+                .WithOne(comment=>comment.Product)
+                .HasForeignKey(comment => comment.ProductID)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(product=>product.Product_Lists)
+                .WithOne(productList=>productList.Product)
+                .HasForeignKey(productList => productList.ProductID)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(product => product.Tickets)
+                .WithOne(tickets => tickets.Product)
+                .HasForeignKey(tickets => tickets.ProductID)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(product => product.Product_Applications)
+                .WithOne(productApplication => productApplication.Product)
+                .HasForeignKey(productApplication => productApplication.ProductID)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            //modelBuilder.Entity<State>()
+            //    .HasMany(state => state.Purchaseds)
+            //    .WithOne(purchased => purchased.State)
+            //    .HasForeignKey(purchased => purchased.StateID)
+            //    .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<State>()
+              .HasMany(state => state.Products)
+              .WithOne(product => product.State)
+              .HasForeignKey(product=> product.StateID)
+              .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Comment>()
+              .HasMany(comment => comment.Helpfuls)
+              .WithOne(helpful => helpful.Comment)
+              .HasForeignKey(helpful => helpful.CommentID)
+              .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Chat>()
+              .HasMany(chat => chat.Messages)
+              .WithOne(message => message.Chat)
+              .HasForeignKey(message => message.ChatID);
+
+            modelBuilder.Entity<Reason>()
+              .HasMany(reason => reason.Tickets)
+              .WithOne(ticket => ticket.Reason)
+              .HasForeignKey(ticket => ticket.ReasonID)
+              .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Reason>()
+             .HasMany(reason => reason.Reports)
+             .WithOne(report => report.Reason)
+             .HasForeignKey(report => report.ReasonID)
+             .OnDelete(DeleteBehavior.Cascade);
 
             #endregion
         }

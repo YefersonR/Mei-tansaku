@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mei-tensaku.WebApi", "Back\Mei-tensaku.WebApi.csproj", "{98C18A0F-E97C-4BE7-A116-B71947CE92F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeiTansaku.WebApi", "Back\MeiTansaku.WebApi.csproj", "{98C18A0F-E97C-4BE7-A116-B71947CE92F6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{6319F0D4-BD5C-48A2-A766-45500F8C9884}"
 EndProject
@@ -11,13 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{D9FC9730-CB2B-4634-A2BC-25D27F9E73F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Domain", "Core.Domain\Core.Domain.csproj", "{F168D1C9-0014-4DA2-88FB-247FC0C98168}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Domain", "Core.Domain\Core.Domain.csproj", "{F168D1C9-0014-4DA2-88FB-247FC0C98168}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Application", "Core.Application\Core.Application.csproj", "{E2060F55-E01F-4243-A487-F53AB477C62B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Application", "Core.Application\Core.Application.csproj", "{E2060F55-E01F-4243-A487-F53AB477C62B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Persistence", "Infrastructure.Persistence\Infrastructure.Persistence.csproj", "{B4723382-8CEC-4D3A-AD1C-5D5D5A7BC9CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Persistence", "Infrastructure.Persistence\Infrastructure.Persistence.csproj", "{B4723382-8CEC-4D3A-AD1C-5D5D5A7BC9CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.Shared", "Infrastructure.Shared\Infrastructure.Shared.csproj", "{3E9975ED-2827-44C0-BA7C-778A0B423654}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.Shared", "Infrastructure.Shared\Infrastructure.Shared.csproj", "{3E9975ED-2827-44C0-BA7C-778A0B423654}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

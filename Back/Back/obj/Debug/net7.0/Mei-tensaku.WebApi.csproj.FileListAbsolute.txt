@@ -71,3 +71,8 @@ C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Bac
 C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Back\obj\Debug\net7.0\Mei-tensaku.WebApi.pdb
 C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Back\obj\Debug\net7.0\Mei-tensaku.WebApi.genruntimeconfig.cache
 C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Back\obj\Debug\net7.0\ref\Mei-tensaku.WebApi.dll
+C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Back\bin\Debug\net7.0\Humanizer.dll
+C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Back\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Back\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Back\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\Users\user\Documents\ITLA\C-8\Proyecto TDS\Mei-tansaku GitHub\Mei-tansaku\Back\Back\bin\Debug\net7.0\System.CodeDom.dll
