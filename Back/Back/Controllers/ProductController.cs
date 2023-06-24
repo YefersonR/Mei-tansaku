@@ -5,6 +5,6 @@ namespace MeiTansaku.WebApi.Controllers
 {
     public class ProductController : BaseApiController
     {
-
+        
     }
 }

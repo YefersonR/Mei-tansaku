@@ -141,6 +141,12 @@ namespace Infrastructure.Persistence.Context
                 .HasForeignKey(productApplication => productApplication.ProductID)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<Product>()
+                .HasMany(product => product.Product_Images)
+                .WithOne(productImages => productImages.Product)
+                .HasForeignKey(productImages => productImages.ProductID)
+                .OnDelete(DeleteBehavior.Cascade);
+
             //modelBuilder.Entity<State>()
             //    .HasMany(state => state.Purchaseds)
             //    .WithOne(purchased => purchased.State)

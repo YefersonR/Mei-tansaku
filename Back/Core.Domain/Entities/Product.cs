@@ -30,6 +30,7 @@ namespace Core.Domain.Entities
         public ICollection<Chat> Chats { get; set; }
         public ICollection<Purchased> Purchaseds{ get; set;}
         public ICollection<Product_Application> Product_Applications { get; set; }
+        public ICollection<Product_Images> Product_Images { get; set; }
         
     }
 }

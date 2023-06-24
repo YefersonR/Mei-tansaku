@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Application.Interfaces.Repositories
+namespace Core.Application.Dtos
 {
-    public interface IGenericRepository<T> : IModifyRepository<T> where T : class
+    public class ProductResponseDTO
     {
 
     }

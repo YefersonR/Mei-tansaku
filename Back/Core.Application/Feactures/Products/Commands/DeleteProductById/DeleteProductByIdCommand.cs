@@ -10,6 +10,7 @@ namespace Core.Application.Feactures.Products.Commands.DeleteProductById
 {
     public class DeleteProductByIdCommand
     {
+        public int ID { get; set; }
     }
     public class DeleteProductByIdCommandHandler
     {

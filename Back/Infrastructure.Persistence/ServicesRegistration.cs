@@ -19,6 +19,7 @@ namespace Infrastructure.Persistence
             services.AddDbContext<DBContext>(option => option.UseSqlServer(configuration.GetConnectionString("ConnectionString"), m => m.MigrationsAssembly(typeof(DBContext).Assembly.FullName)));
             services.AddTransient(typeof(IGenericRepository<>),typeof(GenericRepository<>));
             services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
         }
 
     }
