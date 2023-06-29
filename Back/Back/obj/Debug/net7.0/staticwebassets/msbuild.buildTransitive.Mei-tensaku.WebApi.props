@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\Mei-tensaku.WebApi.props" />
-</Project>

@@ -27,7 +27,6 @@ namespace Core.Application.Feactures.Categories.Queries.GetAllCategories
             _categoryRepository = categoryRepository;
             _mapper = mapper;
         }
-
         public async Task<List<PreviewCategoryDTO>> Handle(GetAllCategoriesQuery request, CancellationToken cancellationToken)
         {
             List<Category> categories = await _categoryRepository.GetAll();
