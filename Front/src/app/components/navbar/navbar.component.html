@@ -1,56 +1,220 @@
 <!-- component -->
-
 <div class="">
-  <section class="relative mx-auto ">
+  <section id="sticky-banner" class="fixed mx-auto z-10 top-0">
     <!-- navbar -->
-    <nav class="flex justify-between bg-gray-900 text-white w-screen">
-      <div class="px-5 xl:px-12 py-6 flex w-full items-center">
-        <a class="text-3xl font-bold font-heading" href="#">
-          <img class="h-9" src="logo.png" alt="logo">
-        </a>
-        
-        <!-- Nav Links -->
-        <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-10">
-          <li><a class="rounded hover:text-gray-400" href="#">Home</a></li>
-          <li><a class="rounded hover:text-gray-400" href="#">Catagory</a></li>
-          <li><a class="rounded hover:text-gray-400" href="#">Collections</a></li>
-          <li><a class="rounded hover:text-gray-400" href="#">Contact Us</a></li>
-        </ul>
+    <nav class="flex justify-between bg text-white w-screen navbar fixed mx-auto z-0">
+      <div class="px-5 xl:px-12 py-6 flex w-full items-center " >
 
-        <!-- search -->
-        <div class="relative -w-96 max-w-xs xl:max-w-lg 2xl:max-w-2xl bg-gray-800 rounded-md hidden xl:flex items-center">
-          <select class=" bg-gray-800 uppercase font-bold text-sm p-4 mr-4 text-neutral-1000" name="" id="">
-            <option class="">all categories</option>
-            <option>category 1</option>
-            <option>category 2</option>
-            <option>category 3</option>
-            <option>category 4</option>
-            </select>
-          <input class="border-l border-gray-300 bg-transparent font-semibold text-sm pl-4" type="text" placeholder="I'm searching for ...">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-          </svg>
-        </div>
+              <div>
+                <a class="text-3xl font-bold font-heading" href="#">
+                  <img class="w-28" src="../../../assets/meitensaku.png" alt="logo" />
+                </a>
+              </div>
+
+
+              <!-- search -->
+              <div class="ml-20 relative h-10 xl:max-w-lg 2xl:max-w-2xl rounded-md  xl:flex items-center h-4">
+                <div class="flex h-11">
+                  <select class="w-40 border-r-2 rounded-l-md appearance-none bg-gray-900 py-2 px-4 leading-tight focus:outline-none bg-gray-900 focus:border-gray-500 text-white">
+                    <option>All Categories
+                      <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="ml-2 w-6 h-6">
+                          <path fill-rule="evenodd" d="M6.293 7.707a1 1 0 011.414 0L10 9.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                    </option>
+                    <option *ngFor="let category of categories">{{ category.name }}</option>
+                  </select>
+
+                  <input class="w-36 border-r-2 bg-gray-900 text-gray-700 py-2 px-4 leading-tight focus:outline-none  bg-gray-900 focus:border-gray-500 text-white" type="text" placeholder="Search...">
+
+                  <div class=" relative inline-block">
+                    <button class="h-11 bg-gray-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r-md flex items-center buttoncat relative" (click)="toggleDropdown()">
+                      <span class="text-[9px] -ml-2">Comprar por Categorías</span>
+                      <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="ml-2 w-6 h-6">
+                          <path fill-rule="evenodd" d="M6.293 7.707a1 1 0 011.414 0L10 9.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                      </div>
+                    </button>
+                    <ul class="absolute right-0 {{ isDropdownOpen ? 'block' : 'hidden' }} bg-white text-gray-700 pt-1 w-60 grid grid-cols-3 gap-2">
+                      <li>
+                        <a class="block px-4 py-2 hover:bg-gray-200" href="#">Opción 1</a>
+                      </li>
+                      <li>
+                        <a class="block px-4 py-2 hover:bg-gray-200" href="#">Opción 2</a>
+                      </li>
+                      <li>
+                        <a class="block px-4 py-2 hover:bg-gray-200" href="#">Opción 3</a>
+                      </li>
+                      <hr class="col-span-3">
+                      <li>
+                        <a class="block px-4 py-2 hover:bg-gray-200" href="#">Opción 4</a>
+                      </li>
+                      <li>
+                        <a class="block px-4 py-2 hover:bg-gray-200" href="#">Opción 5</a>
+                      </li>
+                      <li>
+                        <a class="block px-4 py-2 hover:bg-gray-200" href="#">Opción 6</a>
+                      </li>
+                      <hr class="col-span-3">
+                      <li>
+                        <a class="block px-4 py-2 hover:bg-gray-200" href="#">Opción 1</a>
+                      </li>
+                      <li>
+                        <a class="block px-4 py-2 hover:bg-gray-200" href="#">Opción 2</a>
+                      </li>
+                      <li>
+                        <a class="block px-4 py-2 hover:bg-gray-200" href="#">Opción 3</a>
+                      </li>
+                      <hr class="col-span-3"> 
+                    
+                      <div class="left-14 relative">
+                        <button class="block flex items-center px-4 py-2 text-blue-600 whitespace-nowrap no-underline hover:underline " [routerLink]="['/Allcategory']" >
+                          Ver más Categorías
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline-block ml-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                          </svg>
+                        </button>
+                      </div>                 
+                    </ul>
+                  </div>
+                </div>
+              </div>
 
         <!-- Header Icons -->
-        <div class="hidden xl:flex items-center space-x-5 items-center space-x-4 pl-20">
-          <a class="hover:text-gray-200" href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-            </svg>
-          </a>
-          <a class="flex items-center hover:text-gray-200" href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-            <span class="flex absolute -mt-5 ml-4">
-              <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-500">
-              </span>
-            </span>
-          </a>
+        <div class="flex items-center space-x-4 ml-96 relative">
+          
+          <div class="ml-24">
+            <a class="hover:text-gray-200" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </a>
+          </div>
+        
+          <div>
+            <div>
+              <button class="flex items-center focus:outline-none" (click)="openDropdown()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                <span class="flex absolute -mt-5 ml-4">
+                  <span class="animate-ping absolute inline-flex h-4 w-4 rounded-full bg-pink-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-4 w-4 bg-pink-500">
+                    <p class="text-xs font-medium leading-none text-white ml-1.5 mt-0.5">1</p>
+                  </span>
+                </span>
+              </button>
+            </div>
+            
+
+              <div *ngIf="isOpen" class="absolute py-2 bg-white border border-gray-300 rounded-md shadow-lg z-10 right-0 cart">
+                <div class="mx-auto mt-8 md:mt-12">
+                  <div class="bg-white shadow">
+                    <div class="px-4 py-6 sm:px-8 sm:py-10">
+                      <div class="flow-root">
+                        <ul class="-my-8">
+                          <li class="flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0">
+                            <div class="shrink-0">
+                              <img class="h-24 w-24 max-w-full rounded-lg object-cover" src="data:image/jpeg;base64,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" alt="" />
+                            </div>
+            
+                            <div class="relative flex flex-1 flex-col justify-between">
+                              <div class="sm:col-gap-5 sm:grid sm:grid-cols-2">
+                                <div class="pr-8 sm:pr-5">
+                                  <p class="text-base font-semibold text-gray-900">Nike Air Max 2019</p>
+                                  <p class="mx-0 mt-1 mb-0 text-sm text-gray-400">36EU - 4US</p>
+                                </div>
+            
+                                <div class="mt-4 flex items-end justify-between sm:mt-0 sm:items-start sm:justify-end">
+                                  <p class="shrink-0 w-20 text-base font-semibold text-gray-900 sm:order-2 sm:ml-8 sm:text-right">$259.00</p>
+            
+                                  <div class="sm:order-1">
+                                    <div class="mx-auto flex h-8 items-stretch text-gray-600">
+                                      <button class="flex items-center justify-center rounded-l-md bg-gray-200 px-4 transition hover:bg-black hover:text-white">-</button>
+                                      <div class="flex w-full items-center justify-center bg-gray-100 px-4 text-xs uppercase transition">1</div>
+                                      <button class="flex items-center justify-center rounded-r-md bg-gray-200 px-4 transition hover:bg-black hover:text-white">+</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+            
+                              <div class="absolute top-0 right-0 flex sm:bottom-0 sm:top-auto">
+                                <button type="button" class="flex rounded p-2 text-center text-gray-500 transition-all duration-200 ease-in-out focus:shadow hover:text-gray-900">
+                                  <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" class=""></path>
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0">
+                            <div class="shrink-0">
+                              <img class="h-24 w-24 max-w-full rounded-lg object-cover" src="data:image/jpeg;base64,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" alt="" />
+                            </div>
+            
+                            <div class="relative flex flex-1 flex-col justify-between">
+                              <div class="sm:col-gap-5 sm:grid sm:grid-cols-2">
+                                <div class="pr-8 sm:pr-5">
+                                  <p class="text-base font-semibold text-gray-900">Nike Air Max 2019</p>
+                                  <p class="mx-0 mt-1 mb-0 text-sm text-gray-400">36EU - 4US</p>
+                                </div>
+            
+                                <div class="mt-4 flex items-end justify-between sm:mt-0 sm:items-start sm:justify-end">
+                                  <p class="shrink-0 w-20 text-base font-semibold text-gray-900 sm:order-2 sm:ml-8 sm:text-right">$259.00</p>
+            
+                                  <div class="sm:order-1">
+                                    <div class="mx-auto flex h-8 items-stretch text-gray-600">
+                                      <button class="flex items-center justify-center rounded-l-md bg-gray-200 px-4 transition hover:bg-black hover:text-white">-</button>
+                                      <div class="flex w-full items-center justify-center bg-gray-100 px-4 text-xs uppercase transition">1</div>
+                                      <button class="flex items-center justify-center rounded-r-md bg-gray-200 px-4 transition hover:bg-black hover:text-white">+</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+            
+                              <div class="absolute top-0 right-0 flex sm:bottom-0 sm:top-auto">
+                                <button type="button" class="flex rounded p-2 text-center text-gray-500 transition-all duration-200 ease-in-out focus:shadow hover:text-gray-900">
+                                  <svg class="block h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" class=""></path>
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+            
+                      <div class="mt-6 border-t border-b py-2">
+                        <div class="flex items-center justify-between">
+                          <p class="text-sm text-gray-400">Subtotal</p>
+                          <p class="text-lg font-semibold text-gray-900">$399.00</p>
+                        </div>
+                        <div class="flex items-center justify-between">
+                          <p class="text-sm text-gray-400">Shipping</p>
+                          <p class="text-lg font-semibold text-gray-900">$8.00</p>
+                        </div>
+                      </div>
+                      <div class="mt-6 flex items-center justify-between">
+                        <p class="text-sm font-medium text-gray-900">Total</p>
+                        <p class="text-2xl font-semibold text-gray-900"><span class="text-xs font-normal text-gray-400">RD$</span> 408.00</p>
+                      </div>
+            
+                      <div class="mt-6 text-center">
+                        <button type="button" class="group inline-flex w-full items-center justify-center rounded-md bg-gray-900 px-6 py-4 text-lg font-semibold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800">
+                          Checkout
+                          <svg xmlns="http://www.w3.org/2000/svg" class="group-hover:ml-8 ml-4 h-6 w-6 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           <!-- Sign In / Register      -->
           <a class="flex items-center hover:text-gray-200" href="#">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24"
@@ -61,23 +225,121 @@
           </a>
         </div>
       </div>
-
-
       <!-- Responsive navbar -->
-      <a class="xl:hidden flex mr-6 items-center" href="#">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-        <span class="flex absolute -mt-5 ml-4">
-          <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-500">
-          </span>
-        </span>
-      </a>
-      <a class="navbar-burger self-center mr-12 xl:hidden" href="#">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </a>
+      <div class="flex ">
+        <!-- Button to open the navbar -->
+        <button class="navbar-burger self-center mr-12 xl:hidden transform transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:rotate-45" (click)="toggleOptions()">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        
+      
+        <div *ngIf="showOptions" class="fixed inset-y-0 right-0 w-64 bg-gray-900 shadow-lg z-20 transition-opacity duration-300 ease-in-out">
+          <!-- Navbar content -->
+          <div class="py-4 px-6 flex flex-col">
+            <!-- Close button -->
+            <button class="navbar-close-button ml-auto mb-4 transition-transform duration-300 ease-in-out hover:text-gray-200 hover:rotate-180" (click)="toggleOptions()">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            <div class="">
+            <ul>
+              <li class="mb-2 hidden lg:block">
+                <a href="#" class="flex py-2 px-4 rounded-lg text-gray-300 hover:text-gray-200 hover:bg-gray-700 transition duration-300 ease-in-out">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                  </svg>                  
+                  <span>Home</span>
+                </a>
+              </li>
+              
+              <li class="mb-2 hidden lg:block">
+                <a href="#" class="flex py-2 px-4 rounded-lg text-gray-300 hover:text-gray-200 hover:bg-gray-700 transition duration-300 ease-in-out">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                  </svg>                  
+                  <span>Category</span>
+                </a>
+              </li>
+              
+              <li class="mb-2 hidden lg:block">
+                <a href="#" class="flex py-2 px-4 rounded-lg text-gray-300 hover:text-gray-200 hover:bg-gray-700 transition duration-300 ease-in-out">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                  </svg>                  
+                  <span>Collections</span>
+                </a>
+              </li>
+              
+              <li class="mb-2 hidden lg:block">
+                <a href="#" class="flex py-2 px-4 rounded-lg text-gray-300 hover:text-gray-200 hover:bg-gray-700 transition duration-300 ease-in-out">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+                  </svg>                  
+                  <span>Contact Us</span>
+                </a>
+              </li>
+              
+              
+              <!-- Opciones para pantallas más pequeñas (máx. 670px) -->
+              <li class="mb-2 lg:hidden">
+                <a href="#" class="flex py-2 px-4 rounded-lg text-gray-300 hover:text-gray-200 hover:bg-gray-700 transition duration-300 ease-in-out">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                  </svg>                  
+                  <span>Home</span>
+                </a>
+              </li>
+              
+              <li class="mb-2 lg:hidden">
+                <a href="#" class="flex py-2 px-4 rounded-lg text-gray-300 hover:text-gray-200 hover:bg-gray-700 transition duration-300 ease-in-out">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                  </svg>                  
+                  <span>Category</span>
+                </a>
+              </li>
+              
+              <li class="mb-2 lg:hidden">
+                <a href="#" class="flex py-2 px-4 rounded-lg text-gray-300 hover:text-gray-200 hover:bg-gray-700 transition duration-300 ease-in-out">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                  </svg>                  
+                  <span>Collections</span>
+                </a>
+              </li>
+              
+              <li class="mb-2 lg:hidden">
+                <a href="#" class="flex py-2 px-4 rounded-lg text-gray-300 hover:text-gray-200 hover:bg-gray-700 transition duration-300 ease-in-out">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+                  </svg>                  
+                  <span>Contact Us</span>
+                </a>
+              </li>
+
+              <!-- Search -->
+              <div class="relative bg-gray-900 rounded-md flex xl:hidden items-center">
+                <input class="border-l border-gray-300 bg-transparent font-semibold text-sm p-2" type="text" placeholder="I'm searching for ..." />
+
+                <button class="ml-2 p-2 text-gray-300 hover:text-gray-200">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                  </svg>
+                </button>
+              </div>
+
+            </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+
     </nav>
   </section>
 </div>
