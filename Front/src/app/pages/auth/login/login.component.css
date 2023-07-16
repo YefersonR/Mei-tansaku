@@ -1,0 +1,167 @@
+header {
+  background-color: #144272;
+  padding: 10px;
+}
+.logo {
+  max-width: 150px;
+  display: block;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 0px;
+}
+
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.form-container,
+.social-login-container {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+
+.form-container {
+  border-right: 1px solid #ccc;
+}
+
+
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.checkbox-group {
+  margin-bottom: 10px;
+}
+
+.checkbox-group label {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.submit-button {
+  text-align: center;
+}
+
+.submit-button button {
+  padding: 10px 20px;
+  background-color: #144272;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-button button:hover {
+  background-color: #144272;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-group {
+  flex-basis: 45%;
+}
+
+
+
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.account-type {
+  margin-bottom: 20px;
+}
+
+.account-type label {
+  display: flex;
+  align-items: center;
+}
+
+.social-login {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.social-login button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.social-login img {
+  max-width: 20px;
+  margin-right: 5px;
+}
+
+.google-button {
+  color: #db4437;
+}
+
+.facebook-button {
+  color: #3b5998;
+}
+
+.separator {
+  height: 100%;
+  width: 1px;
+  background-color: #ccc;
+  margin: 0 20px;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .form-container {
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+    padding: 20px;
+    margin-right: 20px;
+    max-width: 400px;
+  }
+
+  .social-login-container {
+    max-width: 300px;
+  }
+}
