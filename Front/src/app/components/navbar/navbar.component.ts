@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { ApiService } from 'src/app/service/api.service';
 import { Router } from '@angular/router';
+import { CategoryService } from 'src/app/services/category.service';
 
 
 @Component({
@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit {
   }
 
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private categoryService: CategoryService, private router: Router) { }
   
 
   ngOnInit(): void {
@@ -45,7 +45,7 @@ export class NavbarComponent implements OnInit {
   
 
   fetchCategories() {
-    this.apiService.getCategories().subscribe(categories => {
+    this.categoryService.getCategories().subscribe(categories => {
       this.categories = categories;
       console.log('Llamada a la API exitosa. Categorías obtenidas:', this.categories);
     })

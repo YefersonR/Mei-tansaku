@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiService } from 'src/app/service/api.service';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-allcategory',
@@ -11,14 +11,14 @@ export class AllcategoryComponent implements OnInit {
 
   categories: any[] = [];
 
-  constructor(private apiService: ApiService) { }
+  constructor(private categoryService : CategoryService) { }
 
   ngOnInit(): void {
     this.fetchCategories();
   }
 
   fetchCategories() {
-    this.apiService.getCategories().subscribe(categories => {
+    this.categoryService.getCategories().subscribe(categories => {
       this.categories = categories;
       console.log('Llamada a la API exitosa. Categorías obtenidas:', this.categories);
     })

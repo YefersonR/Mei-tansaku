@@ -1,8 +1,5 @@
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { AllcategoryComponent } from './components/allcategory/allcategory.component';
-import { ShoppingCartContentComponent } from './components/shopping-cart-content/shopping-cart-content.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
@@ -10,9 +7,6 @@ import { AuthComponent } from './pages/auth/auth.component';
 import { CategoryComponent } from './components/category/category.component';
 
 const routes: Routes = [
-  {path: 'Navbar', component: NavbarComponent},
-  {path: 'Allcategory', component: AllcategoryComponent},
-
   {
     path:'auth',
     component:AuthComponent,

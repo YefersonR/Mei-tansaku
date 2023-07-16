@@ -13,25 +13,29 @@ import { RegisterComponent } from './pages/auth/register/register.component';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { LoadingComponent } from './components/loading/loading.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { AuthHeaderComponent } from './components/auth-header/auth-header.component'
+import { ShoppingCartContentComponent } from './components/shopping-cart-content/shopping-cart-content.component';
+import { AllcategoryComponent } from './components/allcategory/allcategory.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     CategoryComponent,
     HomeComponent,
+    ShoppingCartContentComponent,
+    AllcategoryComponent,
     LoginComponent,
     AuthComponent,
     RegisterComponent,
     LoadingComponent,
     FooterComponent,
-    AuthHeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule, 
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
