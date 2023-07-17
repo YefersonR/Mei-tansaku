@@ -39,7 +39,7 @@ namespace Infrastructure.Persistence.Context
                 {
                     case EntityState.Added:
                         entry.Entity.CreatedDate = DateTime.Now;
-                        entry.Entity.CreatedBy = "Admins";
+                        entry.Entity.CreatedBy = "Admin";
                         break;
                     case EntityState.Modified:
                         entry.Entity.LastUpdatedDate = DateTime.Now;

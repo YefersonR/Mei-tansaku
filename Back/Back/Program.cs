@@ -11,12 +11,23 @@ builder.Services.AddApplicationLayer(builder.Configuration);
 builder.Services.AddControllers();
 builder.Services.AddHealthChecks();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Tansaku_Cors", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();
 
+app.UseCors("Tansaku_Cors");
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseHealthChecks("/health");

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Core.Application.Dtos
 {
-    public class PreviewProductItemDTO
+    public class CommentsDTO
     {
         public int ID { get; set; }
-        public string Name { get; set; }
-        public string ImageUrl { get; set; }
+        public int ProductID { get; set; }
+        public string UserID { get; set; }
         public string Description { get; set; }
-        public double Price { get; set; }
-        public int Rating { get; set; }
+        public int FatherComment { get; set; }
+        public int QuantityHelpful { get; set; }
     }
 }

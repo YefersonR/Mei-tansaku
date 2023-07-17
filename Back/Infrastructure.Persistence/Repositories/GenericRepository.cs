@@ -1,6 +1,7 @@
 ﻿using Core.Application.Interfaces.Repositories;
 using Core.Domain.Common;
 using Infrastructure.Persistence.Context;
+using Infrastructure.Persistence.Specifications;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,10 @@ namespace Infrastructure.Persistence.Repositories
         {
             await _dbContext.Set<T>().FindAsync(id);
             await _dbContext.SaveChangesAsync();
+        }
+        protected IQueryable<T> ApplySpecification(Specification<T> specifications)
+        {
+            return SpecificationEvaluator.GetQuery(_dbContext.Set<T>(), specifications);
         }
     }
 }

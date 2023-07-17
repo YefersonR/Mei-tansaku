@@ -14,12 +14,25 @@ namespace Infrastructure.Persistence
 {
     public static class ServicesRegistration
     {
-        public static void AddRepositories(this IServiceCollection services,IConfiguration configuration)
+        public static void AddRepositories(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<DBContext>(option => option.UseSqlServer(configuration.GetConnectionString("ConnectionString"), m => m.MigrationsAssembly(typeof(DBContext).Assembly.FullName)));
+            services.AddDbContext<DBContext>(option =>
+            {
+                option.UseSqlServer(configuration.GetConnectionString("MeiTansakuConnectionString"),
+                m =>
+                {
+                    m.MigrationsAssembly(typeof(DBContext).Assembly.FullName);
+                    //m.EnableRetryOnFailure(
+                    //    maxRetryCount: 5,
+                    //    maxRetryDelay:TimeSpan.FromSeconds(10),
+                    //    errorNumbersToAdd: null
+                    //    );
+                });
+            });
             services.AddTransient(typeof(IGenericRepository<>),typeof(GenericRepository<>));
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<ICommentRepository, CommentRepository>();
         }
 
     }

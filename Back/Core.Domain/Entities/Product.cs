@@ -15,7 +15,6 @@ namespace Core.Domain.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public string Availability { get; set; }
-        public string ImageUrl { get; set; }
         public string Address { get; set; }
         public double Price { get; set; }
         public double Weight { get; set;}

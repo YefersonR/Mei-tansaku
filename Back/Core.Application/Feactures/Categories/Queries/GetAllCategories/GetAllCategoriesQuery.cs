@@ -14,9 +14,6 @@ namespace Core.Application.Feactures.Categories.Queries.GetAllCategories
 {
     public class GetAllCategoriesQuery : IRequest<List<PreviewCategoryDTO>>
     {
-        public int? ID { get; set; }
-        public string? Name { get; set; }
-        public string? UrlImage{ get; set; }
     }
     public class GetAllCategoriesQueryHandler : IRequestHandler<GetAllCategoriesQuery,List<PreviewCategoryDTO>>
     {
