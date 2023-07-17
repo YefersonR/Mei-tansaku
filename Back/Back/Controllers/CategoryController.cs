@@ -1,6 +1,8 @@
-﻿using Core.Application.Feactures.Categories.Queries.GetAllCategories;
+﻿using Application.Enum;
+using Core.Application.Feactures.Categories.Queries.GetAllCategories;
 using Core.Application.Feactures.Categories.Queries.GetCategoryById;
 using Core.Application.Feactures.Categories.Queries.GetPreviewCategory;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,7 +10,9 @@ namespace MeiTansaku.WebApi.Controllers
 {
     public class CategoryController : BaseApiController
     {
+
         [HttpGet]
+        //[Authorize(Roles = "Owner")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

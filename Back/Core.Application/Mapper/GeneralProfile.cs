@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Core.Application.Dtos;
+using Core.Application.DTOS.Account;
+using Core.Application.ViewModels.User;
 using Core.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -77,6 +79,29 @@ namespace Core.Application.Mapper
 
 
 
+
+
+            CreateMap<AuthenticationResponse, UserSaveViewModel>()
+                .ForMember(x => x.HasError, opt => opt.Ignore())
+                .ForMember(x => x.Error, opt => opt.Ignore())
+                .ReverseMap();
+
+            CreateMap<AuthenticationRequest, LoginViewModel>()
+               .ReverseMap();
+
+            CreateMap<RegisterRequest, UserSaveViewModel>()
+               .ForMember(x => x.HasError, opt => opt.Ignore())
+               .ForMember(x => x.Error, opt => opt.Ignore())
+               .ReverseMap();
+
+            CreateMap<ForgotPasswordRequest, ForgotPasswordViewModel>()
+               .ForMember(x => x.HasError, opt => opt.Ignore())
+               .ForMember(x => x.Error, opt => opt.Ignore())
+               .ReverseMap();
+            CreateMap<ResetPasswordRequest, ResetPasswordViewModel>()
+              .ForMember(x => x.HasError, opt => opt.Ignore())
+              .ForMember(x => x.Error, opt => opt.Ignore())
+              .ReverseMap();
 
         }
 
