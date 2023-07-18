@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { CategoryComponent } from './components/category/category.component';
+import { ServicioAlClienteComponent } from './components/servicioalcliente/servicioalcliente.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
       }
     ],
     pathMatch:'full'
+  },
+  {
+    path:'help',
+    component:ServicioAlClienteComponent
   },
   {
     path:'**',
