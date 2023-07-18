@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -12,7 +12,11 @@ import { RegisterComponent } from './pages/auth/register/register.component';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { LoadingComponent } from './components/loading/loading.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { AuthHeaderComponent } from './components/auth-header/auth-header.component'
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+
+import { CarritodentroComponent } from './components/carritodentro/carritodentro.component';
+import { ServicioAlClienteComponent } from './components/servicioalcliente/servicioalcliente.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,13 +28,18 @@ import { AuthHeaderComponent } from './components/auth-header/auth-header.compon
     RegisterComponent,
     LoadingComponent,
     FooterComponent,
-    AuthHeaderComponent
+    HeroDetailComponent,
+    CarritodentroComponent,
+    ServicioAlClienteComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    RouterModule,
     FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
