@@ -1,0 +1,86 @@
+<div class="bg-slate-400 mx-auto mt-16 2xl:mx-auto 2xl:container py-12 px-4 sm:px-6 xl:px-20 2xl:px-0 w-full">
+    <div class="ml-0">
+        <div class="flex">
+            <div class="ml-1 w-36">
+                <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 mx-3">
+                    All Categories
+                </h1>
+                <ul>
+                    <li class="" *ngFor="let category of categories">{{ category.name }}</li>
+                    <li><a href=""></a></li>
+                </ul>
+            </div>
+            <div>
+
+                <div class="">
+                    <!-- Hero section -->
+                    <header class="bg-white">
+                        <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+                            <p class="mt-4 max-w-xl text-base text-gray-500">
+                                Find great deals on millions of items, from everyday essentials to
+                                unique finds.
+                            </p>
+                            <div class="mt-6">
+                                <a href="#" class="text-base font-medium text-blue-600 hover:text-blue-500">Start
+                                    Shopping</a>
+                            </div>
+                        </div>
+                    </header>
+
+                    <!-- Main content -->
+                    <main>
+                        <!-- Categories section -->
+                        <section class="bg-white">
+                            <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+                                <h2 class="text-2xl font-extrabold text-gray-900">Popular Categories</h2>
+                                <div class="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                                    <!-- Category cards -->
+                                    <div
+                                        class="bg-white border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
+                                        <div class="aspect-w-3 aspect-h-2 bg-gray-100">
+                                            <img class="object-cover object-center" src="electronics.jpg" alt="Electronics">
+                                        </div>
+                                        <div class="p-4">
+                                            <h3 class="text-lg font-medium text-gray-900">Electronics</h3>
+                                            <p class="mt-2 text-sm text-gray-500">Shop now</p>
+                                        </div>
+                                    </div>
+                                    <!-- More category cards... -->
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Featured deals section -->
+                        <section class="bg-gray-200">
+                            <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+                                <!-- Rest of the code for the featured deals section... -->
+                            </div>
+                        </section>
+
+                        <!-- Additional content section -->
+                        <section class="bg-white">
+                            <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+                                <h2 class="text-2xl font-extrabold text-gray-900">New Arrivals</h2>
+                                <div class="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                                    <!-- New arrival cards -->
+                                    <div
+                                        class="bg-white border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
+                                        <div class="aspect-w-3 aspect-h-2 bg-gray-100">
+                                            <img class="object-cover object-center" src="new-arrivals.jpg"
+                                                alt="New Arrivals">
+                                        </div>
+                                        <div class="p-4">
+                                            <h3 class="text-lg font-medium text-gray-900">New Arrivals</h3>
+                                            <p class="mt-2 text-sm text-gray-500">Check out the latest products</p>
+                                        </div>
+                                    </div>
+                                    <!-- More new arrival cards... -->
+                                </div>
+                            </div>
+                        </section>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

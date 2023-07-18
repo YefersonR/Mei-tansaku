@@ -1,0 +1,12 @@
+.bg{
+    background-color: #144272 !important;
+}
+
+.navbar{
+    position: fixed;
+    width: 100%;
+}
+
+.cart{
+    width: 600px;
+}
