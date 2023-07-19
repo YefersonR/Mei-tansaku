@@ -25,7 +25,7 @@
                     <option *ngFor="let category of categories">{{ category.name }}</option>
                   </select>
 
-                  <input class="w-36 border-r-2 bg-gray-900 text-gray-700 py-2 px-4 leading-tight focus:outline-none  bg-gray-900 focus:border-gray-500 text-white" type="text" placeholder="Search...">
+                  <input class="selected border-r-2 bg-gray-900 text-gray-700 py-2 px-4 leading-tight focus:outline-none  bg-gray-900 focus:border-gray-500 text-white" type="text" placeholder="Search...">
 
                   <div class=" relative inline-block">
                     <button class="h-11 bg-gray-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r-md flex items-center buttoncat relative" (click)="toggleDropdown()">
@@ -36,46 +36,19 @@
                         </svg>
                       </div>
                     </button>
-                    <ul class="absolute right-0 {{ isDropdownOpen ? 'block' : 'hidden' }} bg-white text-gray-700 pt-1 w-60 grid grid-cols-3 gap-2">
-                      <li>
-                        <a class="block px-4 py-2 hover:bg-gray-200" href="#">Opción 1</a>
-                      </li>
-                      <li>
-                        <a class="block px-4 py-2 hover:bg-gray-200" href="#">Opción 2</a>
-                      </li>
-                      <li>
-                        <a class="block px-4 py-2 hover:bg-gray-200" href="#">Opción 3</a>
+                    <ul class="absolute right-0 {{ isDropdownOpen ? 'block' : 'hidden' }} bg-white text-gray-700 pt-1 w-[32rem] grid grid-cols-3 gap-2">
+                      <li *ngFor="let category of categories">
+                        <a class="block px-4 py-2 hover:bg-gray-200" href="#">{{ category.name }}</a>
                       </li>
                       <hr class="col-span-3">
-                      <li>
-                        <a class="block px-4 py-2 hover:bg-gray-200" href="#">Opción 4</a>
-                      </li>
-                      <li>
-                        <a class="block px-4 py-2 hover:bg-gray-200" href="#">Opción 5</a>
-                      </li>
-                      <li>
-                        <a class="block px-4 py-2 hover:bg-gray-200" href="#">Opción 6</a>
-                      </li>
-                      <hr class="col-span-3">
-                      <li>
-                        <a class="block px-4 py-2 hover:bg-gray-200" href="#">Opción 1</a>
-                      </li>
-                      <li>
-                        <a class="block px-4 py-2 hover:bg-gray-200" href="#">Opción 2</a>
-                      </li>
-                      <li>
-                        <a class="block px-4 py-2 hover:bg-gray-200" href="#">Opción 3</a>
-                      </li>
-                      <hr class="col-span-3"> 
-                    
                       <div class="left-14 relative">
-                        <button class="block flex items-center px-4 py-2 text-blue-600 whitespace-nowrap no-underline hover:underline " [routerLink]="['/Allcategory']" >
+                        <a class="block flex items-center px-4 py-2 text-blue-600 whitespace-nowrap no-underline hover:underline" [routerLink]="['/Allcategory']">
                           Ver más Categorías
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline-block ml-1">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
                           </svg>
-                        </button>
-                      </div>                 
+                        </a>
+                      </div>
                     </ul>
                   </div>
                 </div>
@@ -92,44 +65,26 @@
             </a>
           </div>
         
-          <div>
-            <div>
-              <button class="flex items-center focus:outline-none" (click)="openDropdown()">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-                <span class="flex absolute -mt-5 ml-4">
-                  <span class="animate-ping absolute inline-flex h-4 w-4 rounded-full bg-pink-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-4 w-4 bg-pink-500">
-                    <p class="text-xs font-medium leading-none text-white ml-1.5 mt-0.5">1</p>
-                  </span>
-                </span>
-              </button>
-            </div>
-            
 
+
+        <div class="hidden xl:flex  items-center space-x-4">
+          <div>
+            <button class="flex items-center focus:outline-none" (click)="openDropdown()">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+              <span class="flex absolute -mt-5 ml-4">
+                <span class="animate-ping absolute inline-flex h-4 w-4 rounded-full bg-pink-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-4 w-4 bg-pink-500">
+                  <p class="text-xs font-medium leading-none text-white ml-1.5 mt-0.5">1</p>
+                </span>
+              </span>
+            </button>
               <div *ngIf="isOpen" class="absolute py-2 bg-white border border-gray-300 rounded-md shadow-lg z-10 right-0 cart">
+                <app-shopping-cart-content></app-shopping-cart-content>
               </div>
           </div>
-
-        <div class="hidden xl:flex  items-center space-x-4 pl-20">
-          <a class="hover:text-gray-200" href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-            </svg>
-          </a>
-          <a class="flex items-center hover:text-gray-200" href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-            <span class="flex absolute -mt-5 ml-4">
-              <span class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-3 w-3 bg-pink-500">
-              </span>
-            </span>
-          </a>
+          
           <!-- Sign In / Register      -->
           <a class="flex items-center hover:text-gray-200" href="#">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24"

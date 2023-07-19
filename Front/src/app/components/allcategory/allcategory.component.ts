@@ -20,7 +20,7 @@ export class AllcategoryComponent implements OnInit {
   fetchCategories() {
     this.categoryService.getCategories().subscribe(categories => {
       this.categories = categories;
-      console.log('Llamada a la API exitosa. Categorías obtenidas:', this.categories);
+      console.log('Llamada a la API exitosa. Categorías obtenidas ALLL:', this.categories);
     })
   }
   

@@ -5,6 +5,9 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { CategoryComponent } from './components/category/category.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { AllcategoryComponent } from './components/allcategory/allcategory.component';
+import { ShoppingCartContentComponent } from './components/shopping-cart-content/shopping-cart-content.component';
 
 const routes: Routes = [
   {
@@ -36,10 +39,15 @@ const routes: Routes = [
     ],
     pathMatch:'full'
   },
-  {
-    path:'**',
-    component:HomeComponent
-  }
+
+    {path: 'Navbar', component: NavbarComponent},
+    {path: 'ShoppingCartContent', component: ShoppingCartContentComponent},
+    {path: 'Allcategory', component: AllcategoryComponent},
+    
+    {
+      path:'**',
+      component:HomeComponent
+    },
 ];
 
 @NgModule({

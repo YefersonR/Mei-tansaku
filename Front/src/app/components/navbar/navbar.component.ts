@@ -15,7 +15,11 @@ export class NavbarComponent implements OnInit {
   isOpen = false;
   isContentHovered = false;
   showOptions: boolean = false;
+
+  categoriess: any[] = [];
   categories: any[] = [];
+
+  
   isDropdownOpen = false;
 
 
@@ -41,6 +45,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchCategories();
+    
   }
   
 
@@ -49,10 +54,6 @@ export class NavbarComponent implements OnInit {
       this.categories = categories;
       console.log('Llamada a la API exitosa. Categorías obtenidas:', this.categories);
     })
-  }
-
-  navegar (){
-    this.router.navigate(['/allcategory']);
   }
   
 }

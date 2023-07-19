@@ -4,8 +4,12 @@
 
           <div class="flex space-x-2 h-8">
             <div class="w-80 border-gray-800 border-r-2 space-x-2 h-">
-              <a href="" class=" text-xl font-bold text-gray-800 flex no-underline hover:underline">Piezas de Automóvil y Accesorios</a>
+              <a href="" class="text-xl font-bold text-gray-800 flex no-underline hover:underline">
+                {{ selectedCategory?.name }}
+              </a>
             </div>
+            
+            
             <div class="space-x-2">
               <a href="" class="flex items-center no-underline hover:underline">
                 <span class=" text-base text-gray-800">Ver todo</span>
@@ -127,6 +131,7 @@
             </div>
           </section>
         </div>
+      </div>
       
     <div class="relative mt- z-0 2xl:mx-auto 2xl:container py-12 px-4 sm:px-6 xl:px-20 2xl:px-0 w-full">
       <div class="mx-auto max-w-screen-lg">
