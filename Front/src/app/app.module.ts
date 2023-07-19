@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -13,8 +13,12 @@ import { RegisterComponent } from './pages/auth/register/register.component';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { LoadingComponent } from './components/loading/loading.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { CarritodentroComponent } from './components/carritodentro/carritodentro.component';
+import { ServicioAlClienteComponent } from './components/servicioalcliente/servicioalcliente.component';
 import { ShoppingCartContentComponent } from './components/shopping-cart-content/shopping-cart-content.component';
 import { AllcategoryComponent } from './components/allcategory/allcategory.component';
+
 
 @NgModule({
   declarations: [
@@ -29,12 +33,16 @@ import { AllcategoryComponent } from './components/allcategory/allcategory.compo
     RegisterComponent,
     LoadingComponent,
     FooterComponent,
+    HeroDetailComponent,
+    CarritodentroComponent,
+    ServicioAlClienteComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule, 
+    RouterModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [],

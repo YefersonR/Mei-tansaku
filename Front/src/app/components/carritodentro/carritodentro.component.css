@@ -1,0 +1,23 @@
+/* Agrega aquí tus estilos personalizados si los necesitas */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cart-item {
+  width: 100%;
+}
+
+.item-details {
+  flex: 1;
+}
+
+.checkout-card {
+  width: 100%;
+}
+
+.heart-icon {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

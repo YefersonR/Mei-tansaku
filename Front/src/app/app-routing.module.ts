@@ -8,6 +8,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AllcategoryComponent } from './components/allcategory/allcategory.component';
 import { ShoppingCartContentComponent } from './components/shopping-cart-content/shopping-cart-content.component';
+import { ServicioAlClienteComponent } from './components/servicioalcliente/servicioalcliente.component';
 
 const routes: Routes = [
   {
@@ -43,11 +44,15 @@ const routes: Routes = [
     {path: 'Navbar', component: NavbarComponent},
     {path: 'ShoppingCartContent', component: ShoppingCartContentComponent},
     {path: 'Allcategory', component: AllcategoryComponent},
-    
-    {
-      path:'**',
-      component:HomeComponent
-    },
+
+  {
+    path:'help',
+    component:ServicioAlClienteComponent
+  },
+  {
+    path:'**',
+    component:HomeComponent
+  }
 ];
 
 @NgModule({
