@@ -42,7 +42,6 @@ const routes: Routes = [
   },
 
     {path: 'Navbar', component: NavbarComponent},
-    {path: 'ShoppingCartContent', component: ShoppingCartContentComponent},
     {path: 'Allcategory', component: AllcategoryComponent},
 
   {

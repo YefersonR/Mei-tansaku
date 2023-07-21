@@ -18,6 +18,7 @@ import { CarritodentroComponent } from './components/carritodentro/carritodentro
 import { ServicioAlClienteComponent } from './components/servicioalcliente/servicioalcliente.component';
 import { ShoppingCartContentComponent } from './components/shopping-cart-content/shopping-cart-content.component';
 import { AllcategoryComponent } from './components/allcategory/allcategory.component';
+import { ProductComponent } from './components/product/product.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { AllcategoryComponent } from './components/allcategory/allcategory.compo
     HeroDetailComponent,
     CarritodentroComponent,
     ServicioAlClienteComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,
