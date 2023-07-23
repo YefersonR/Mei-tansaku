@@ -23,6 +23,7 @@ namespace Core.Application.Mapper
                 .ForMember(x => x.Products, opt => opt.Ignore())
                 .ForMember(x => x.Attribute_Categories, opt => opt.Ignore())
                 .ReverseMap();
+
             CreateMap<PreviewProductItemDTO, Product>()
                 .ForMember(x => x.CreatedBy, opt => opt.Ignore())
                 .ForMember(x => x.CreatedDate, opt => opt.Ignore())
@@ -77,9 +78,52 @@ namespace Core.Application.Mapper
                 .ReverseMap();
 
 
+            CreateMap<SearchPreviewProductItemDTO, Product>()
+                .ForMember(x => x.CreatedBy, opt => opt.Ignore())
+                .ForMember(x => x.CreatedDate, opt => opt.Ignore())
+                .ForMember(x => x.LastUpdatedBy, opt => opt.Ignore())
+                .ForMember(x => x.LastUpdatedDate, opt => opt.Ignore())
+                .ForMember(x => x.State, opt => opt.Ignore())
+                .ForMember(x => x.Private, opt => opt.Ignore())
+                .ForMember(x => x.Stock, opt => opt.Ignore())
+                .ForMember(x => x.StateID, opt => opt.Ignore())
+                .ForMember(x => x.Address, opt => opt.Ignore())
+                .ForMember(x => x.Availability, opt => opt.Ignore())
+                .ForMember(x => x.Category, opt => opt.Ignore())
+                //.ForMember(x => x.CategoryID, opt => opt.Ignore())
+                .ForMember(x => x.Chats, opt => opt.Ignore())
+                .ForMember(x => x.Comments, opt => opt.Ignore())
+                .ForMember(x => x.Private, opt => opt.Ignore())
+                .ForMember(x => x.Product_Lists, opt => opt.Ignore())
+                .ForMember(x => x.Purchaseds, opt => opt.Ignore())
+                .ForMember(x => x.Weight, opt => opt.Ignore())
+                .ForMember(x => x.SellerID, opt => opt.Ignore())
+                .ForMember(x => x.Tickets, opt => opt.Ignore())
+                .ReverseMap();
 
+            CreateMap<SearchPreviewCategoryDTO, Category>()
+                .ForMember(x => x.CreatedBy, opt => opt.Ignore())
+                .ForMember(x => x.CreatedDate, opt => opt.Ignore())
+                .ForMember(x => x.LastUpdatedBy, opt => opt.Ignore())
+                .ForMember(x => x.LastUpdatedDate, opt => opt.Ignore())
+                .ForMember(x => x.Products, opt => opt.Ignore())
+                .ForMember(dest => dest.Attribute_Categories, opt => opt.MapFrom(src => src.Attribute_Categories))
+                //.ForMember(x => x.Attribute_Categories, opt => opt.Ignore())
+                .ReverseMap();
 
-
+            CreateMap<SearchAttribute_CategoryDTO, Attribute_Category>()
+                .ForMember(x => x.CreatedBy, opt => opt.Ignore())
+                .ForMember(x => x.CreatedDate, opt => opt.Ignore())
+                .ForMember(x => x.LastUpdatedBy, opt => opt.Ignore())
+                .ForMember(x => x.LastUpdatedDate, opt => opt.Ignore())
+                .ReverseMap();
+            
+            CreateMap<SearchValue_AttributeDTO, Value_Attribute>()
+                .ForMember(x => x.CreatedBy, opt => opt.Ignore())
+                .ForMember(x => x.CreatedDate, opt => opt.Ignore())
+                .ForMember(x => x.LastUpdatedBy, opt => opt.Ignore())
+                .ForMember(x => x.LastUpdatedDate, opt => opt.Ignore())
+                .ReverseMap();
 
             CreateMap<AuthenticationResponse, UserSaveViewModel>()
                 .ForMember(x => x.HasError, opt => opt.Ignore())

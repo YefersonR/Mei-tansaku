@@ -11,5 +11,6 @@ namespace Core.Application.Interfaces.Repositories
     {
         Task<Product> GetProductDetails(int id, int commentsPage, int commentsPageSize = 10);
         Task<Product> GetProductByName(string name);
+        Task<(List<Product>, List<Category>)> SearchProduct(string name, List<List<object>> category_attribute = null);
     }
 }

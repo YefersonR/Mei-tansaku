@@ -8,7 +8,7 @@ namespace Core.Application.Dtos
 {
     public class SearchProductDTO
     {
-        public List<PreviewProductItemDTO> PreviewProductItemDTO { get; set; }
-        public List<PreviewCategoryDTO> PreviewCategoryDTO { get; set; }
+        public List<SearchPreviewProductItemDTO> SearchPreviewProductItemDTO { get; set; }
+        public List<SearchPreviewCategoryDTO> SearchPreviewCategoryDTO { get; set; }
     }
 }

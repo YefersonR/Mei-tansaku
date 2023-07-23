@@ -41,5 +41,15 @@ namespace Infrastructure.Persistence.Repositories
             }
             return category;
         }
+
+        public async Task<List<Category>> GetAllCategoryById(List<int> list)
+        {
+            List<Category> Categories = new List<Category>();
+            foreach(var id in list)
+            {
+                Categories.Add(await ApplySpecification(new CategoryById(id)).FirstAsync());
+            }
+            return Categories;
+        }
     }
 }

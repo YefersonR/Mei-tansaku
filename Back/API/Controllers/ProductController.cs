@@ -1,4 +1,5 @@
 ﻿using Core.Application.Feactures.Products.Queries.GetProductById;
+using Core.Application.Feactures.Products.Queries.SearchProducts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,11 +32,11 @@ namespace MeiTansaku.WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Search(int ID)
+        public async Task<IActionResult> Search(string Name)
         {
             try
             {
-                var productResponse = await Mediator.Send(new GetProductDetailsQuery { ID = ID });
+                var productResponse = await Mediator.Send(new SearchProductsQuery { Name = Name });
                 if (productResponse is null)
                 {
                     return NotFound();

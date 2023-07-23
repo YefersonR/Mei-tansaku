@@ -28,6 +28,7 @@ namespace Infrastructure.Persistence
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<ICommentRepository, CommentRepository>();
+            services.AddTransient<IValue_AttributeRepository, Value_AttributesRepository>();
         }
 
     }
