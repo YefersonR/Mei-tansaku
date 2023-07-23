@@ -19,6 +19,8 @@ import { ServicioAlClienteComponent } from './components/servicioalcliente/servi
 import { ShoppingCartContentComponent } from './components/shopping-cart-content/shopping-cart-content.component';
 import { AllcategoryComponent } from './components/allcategory/allcategory.component';
 import { ProductComponent } from './components/product/product.component';
+import { ShopByCategoryComponent } from './components/shop-by-category/shop-by-category.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 
 @NgModule({
@@ -38,6 +40,8 @@ import { ProductComponent } from './components/product/product.component';
     CarritodentroComponent,
     ServicioAlClienteComponent,
     ProductComponent,
+    ShopByCategoryComponent,
+    CarouselComponent,
   ],
   imports: [
     BrowserModule,
