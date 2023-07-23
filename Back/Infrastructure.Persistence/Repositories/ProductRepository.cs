@@ -1,4 +1,5 @@
-﻿using Core.Application.Interfaces.Repositories;
+﻿using Azure.Core;
+using Core.Application.Interfaces.Repositories;
 using Core.Domain.Entities;
 using Infrastructure.Persistence.Context;
 using Infrastructure.Persistence.Specifications;
@@ -11,10 +12,13 @@ namespace Infrastructure.Persistence.Repositories
     {
         private readonly DBContext _dbContext;
         private readonly ICategoryRepository _categoryRepository;
-        public ProductRepository(DBContext dbContext, ICategoryRepository categoryRepository) : base(dbContext)
+        private readonly IAttribute_ProductRepository _attribute_ProductRepository;
+
+        public ProductRepository(DBContext dbContext, ICategoryRepository categoryRepository, IAttribute_ProductRepository attribute_ProductRepository) : base(dbContext)
         {
             _dbContext = dbContext;
             _categoryRepository = categoryRepository;
+            _attribute_ProductRepository = attribute_ProductRepository;
         }
 
         public async Task<Product> GetProductDetails(int id, int commentsPage, int commentsPageSize=10)
@@ -40,9 +44,20 @@ namespace Infrastructure.Persistence.Repositories
             await ApplySpecification(new ProductByName(name)).FirstAsync();
 
 
-        public async Task<(List<Product>, List<Category>)> SearchProduct(string name, List<List<object>> category_attribute)
+        public async Task<(List<Product>, List<Category>)> SearchProduct(string name, List<int> category_attribute)
         {
             var product = ApplySpecification(new ProductByName(name)).ToList();
+            for (int i = category_attribute.Count - 1; i >= 0; i--)
+            {
+                for (int x = product.Count - 1; x >= 0; x--)
+                {
+                    if (await _attribute_ProductRepository.GetRelations(category_attribute[i], product[x].ID) == false)
+                    {
+                        product.RemoveAt(x);
+                    }
+                }
+            }
+
             var uniqueCategoryIDs = product.Select(p => p.CategoryID).Distinct().ToList();
             var categories = await _categoryRepository.GetAllCategoryById(uniqueCategoryIDs);
             return (product, categories);

@@ -28,7 +28,9 @@ namespace Infrastructure.Persistence.Context
         public DbSet<Seller_Rating> Seller_Rating{ get; set; }
         public DbSet<State> States{ get; set; }
         public DbSet<Tickets> Tickets{ get; set; }
-        public DbSet<Value_Attribute> Value_Attribute{ get; set; }
+        public DbSet<Value_Attribute> Value_Attribute { get; set; }
+        public DbSet<Attribute_Product> Attribute_Product { get; set; }
+
         public DBContext(DbContextOptions options):base(options) {}
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
@@ -72,11 +74,12 @@ namespace Infrastructure.Persistence.Context
             modelBuilder.Entity<State>().ToTable("State");
             modelBuilder.Entity<Tickets>().ToTable("Tickets");
             modelBuilder.Entity<Value_Attribute>().ToTable("Value_attribute");
+            modelBuilder.Entity<Attribute_Product>().ToTable("Attribute_Product");
 
             #endregion
-            
+
             #region Primary Keys
-            
+
             modelBuilder.Entity<Attribute_Category>().HasKey(attributeCategory => attributeCategory.ID);
             modelBuilder.Entity<Category>().HasKey(category => category.ID);
             modelBuilder.Entity<Chat>().HasKey(chat => chat.ID);
@@ -95,6 +98,7 @@ namespace Infrastructure.Persistence.Context
             modelBuilder.Entity<State>().HasKey(state => state.ID);
             modelBuilder.Entity<Tickets>().HasKey(tickets => tickets.ID);
             modelBuilder.Entity<Value_Attribute>().HasKey(valueAttribute => valueAttribute.ID);
+            modelBuilder.Entity<Attribute_Product>().HasKey(attributeProduct => attributeProduct.ID);
 
             #endregion
 
@@ -181,6 +185,18 @@ namespace Infrastructure.Persistence.Context
              .WithOne(report => report.Reason)
              .HasForeignKey(report => report.ReasonID)
              .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Value_Attribute>()
+             .HasMany(x => x.Attribute_Product)
+             .WithOne(m => m.Value_Attribute)
+             .HasForeignKey(x => x.Value_AttributeID)
+             .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Product>()
+             .HasMany(x => x.Attribute_Product)
+             .WithOne(m => m.Product)
+             .HasForeignKey(x => x.ProductID)
+             .OnDelete(DeleteBehavior.NoAction);
 
             #endregion
         }

@@ -15,6 +15,7 @@ namespace Core.Application.Feactures.Products.Queries.SearchProducts
     {
         public string Name { get; set; }
         public int? CategoryID { get; set; }
+        public List<int>? values { get; set; }
     }
 
     public class SearchProductsQueryHandler : IRequestHandler<SearchProductsQuery, SearchProductDTO>
@@ -34,7 +35,8 @@ namespace Core.Application.Feactures.Products.Queries.SearchProducts
         {
             SearchProductDTO data = new SearchProductDTO();
             List<SearchPreviewCategoryDTO> completeCategory = new List<SearchPreviewCategoryDTO>();
-            var product = await _productRepository.SearchProduct(request.Name);
+            var product = await _productRepository.SearchProduct(request.Name, request.values);
+
             data.SearchPreviewProductItemDTO = _mapper.Map<List<SearchPreviewProductItemDTO>>(product.Item1);
             data.SearchPreviewCategoryDTO = _mapper.Map<List<SearchPreviewCategoryDTO>>(product.Item2);
             foreach(var x in data.SearchPreviewCategoryDTO)

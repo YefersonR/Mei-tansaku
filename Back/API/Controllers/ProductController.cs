@@ -32,11 +32,14 @@ namespace MeiTansaku.WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Search(string Name)
+        public async Task<IActionResult> Search(string Name, List<int> values)
         {
             try
             {
-                var productResponse = await Mediator.Send(new SearchProductsQuery { Name = Name });
+                var productResponse = await Mediator.Send(new SearchProductsQuery { 
+                    Name = Name,
+                    values = values
+                });
                 if (productResponse is null)
                 {
                     return NotFound();

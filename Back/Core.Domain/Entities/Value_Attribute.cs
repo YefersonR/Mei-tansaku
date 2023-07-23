@@ -12,5 +12,7 @@ namespace Core.Domain.Entities
         public int AttributeCategoryID{ get; set; }
         public string Value { get; set; }
         public Attribute_Category Attribute_Category { get; set; }
+
+        public ICollection<Attribute_Product> Attribute_Product { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace Infrastructure.Persistence.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.5")
+                .HasAnnotation("ProductVersion", "7.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -56,6 +56,43 @@ namespace Infrastructure.Persistence.Migrations
                     b.HasIndex("CategoryID");
 
                     b.ToTable("Attribute_category", (string)null);
+                });
+
+            modelBuilder.Entity("Core.Domain.Entities.Attribute_Product", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastUpdatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LastUpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Value_AttributeID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ProductID");
+
+                    b.HasIndex("Value_AttributeID");
+
+                    b.ToTable("Attribute_Product", (string)null);
                 });
 
             modelBuilder.Entity("Core.Domain.Entities.Category", b =>
@@ -821,6 +858,25 @@ namespace Infrastructure.Persistence.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("Core.Domain.Entities.Attribute_Product", b =>
+                {
+                    b.HasOne("Core.Domain.Entities.Product", "Product")
+                        .WithMany("Attribute_Product")
+                        .HasForeignKey("ProductID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Core.Domain.Entities.Value_Attribute", "Value_Attribute")
+                        .WithMany("Attribute_Product")
+                        .HasForeignKey("Value_AttributeID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Value_Attribute");
+                });
+
             modelBuilder.Entity("Core.Domain.Entities.Chat", b =>
                 {
                     b.HasOne("Core.Domain.Entities.Product", "Product")
@@ -1012,6 +1068,8 @@ namespace Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Core.Domain.Entities.Product", b =>
                 {
+                    b.Navigation("Attribute_Product");
+
                     b.Navigation("Chats");
 
                     b.Navigation("Comments");
@@ -1044,6 +1102,11 @@ namespace Infrastructure.Persistence.Migrations
             modelBuilder.Entity("Core.Domain.Entities.State", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Core.Domain.Entities.Value_Attribute", b =>
+                {
+                    b.Navigation("Attribute_Product");
                 });
 #pragma warning restore 612, 618
         }
