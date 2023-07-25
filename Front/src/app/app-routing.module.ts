@@ -41,8 +41,9 @@ const routes: Routes = [
     pathMatch:'full'
   },
 
-    {path: 'Navbar', component: NavbarComponent},
-    {path: 'Allcategory', component: AllcategoryComponent},
+    {path: 'navbar', component: NavbarComponent},
+    {path: 'allcategory', component: AllcategoryComponent},
+    {path: 'category.name', component: AllcategoryComponent},
 
   {
     path:'help',

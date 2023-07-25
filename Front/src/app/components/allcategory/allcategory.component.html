@@ -1,133 +1,108 @@
+<!-- allcategory.component.html -->
 <div class="bg-white mx-auto mt-16 2xl:mx-auto 2xl:container py-12 px-4 sm:px-6 xl:px-20 2xl:px-0 w-full">
-    <div class="flex">
+    <div class="flex flex-col lg:flex-row"> <!-- Cambiamos a flex-col en pantallas pequeñas y flex-row en pantallas grandes -->
         <!-- Side Bar with Categories -->
         <div class="w-40 pr-4">
-            <div class="fixed top-32 w-56">
-            <h1 class="text-2xl font-bold text-black mb-4">All Categories</h1>
-            <ul class="leading-tight">
-                <li *ngFor="let category of categories; let i = index"
-                    class="mb-6 no-underline hover:underline category-item"
-                    [ngClass]="{ 'active-category': i === activeCategoryIndex }">
-                <a href="">{{ category.name }}</a>
-                </li>
-            </ul>
+            <div class="sticky top-32 w-56">
+                <h1 class="text-2xl font-bold text-black mb-4">All Categories</h1>
+                <ul class="leading-tight">
+                    <li class="mb-4 no-underline hover:underline" *ngFor="let category of categories">
+                        <!-- Agregar el evento (click) para activar el desplazamiento suave -->
+                        <a (click)="scrollToAnchor(category.name)">{{ category.name }}</a>
+                    </li>
+                </ul>
             </div>
         </div>
 
-        <div class="flex-1 pl-4 ml-28">
-            <h2 class="text-2xl font-extrabold text-gray-900 mb-8">Popular Categories</h2>
-            <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                <!-- Category cards - 1st row -->
-                <div class="bg-white border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-                    <div class="aspect-w-3 aspect-h-2 bg-gray-100">
-                        <img class="object-cover object-center w-full h-full" src="electronics.jpg" alt="Electronics">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-medium text-gray-900">Electronics</h3>
-                        <p class="mt-2 text-sm text-gray-500">Shop now</p>
+        <div class="ml-40 flex-1"> <!-- Agregamos la clase flex-1 para que ocupe el espacio restante -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4"> <!-- Definimos las columnas responsivas -->
+                <div class="mr-10" *ngFor="let category of categories">
+                    <h1 class="text-xl font-bold text-black mb-4 mr-8" [id]="category.name">{{ category.name }}</h1>
+                    <div class="bg-amber-100 flex justify-center items-center">
+                        <img class="w-28" src="" alt="category.urlImage">
                     </div>
                 </div>
-
-                <!-- Category cards - 2nd row -->
-                <div class="bg-white border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-                    <div class="aspect-w-3 aspect-h-2 bg-gray-100">
-                        <img class="object-cover object-center w-full h-full" src="category2.jpg" alt="Category 2">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-medium text-gray-900">Category 2</h3>
-                        <p class="mt-2 text-sm text-gray-500">Shop now</p>
-                    </div>
-                </div>
-
-                <!-- Category cards - 3rd row -->
-                <div class="bg-white border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-                    <div class="aspect-w-3 aspect-h-2 bg-gray-100">
-                        <img class="object-cover object-center w-full h-full" src="category3.jpg" alt="Category 3">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-medium text-gray-900">Category 3</h3>
-                        <p class="mt-2 text-sm text-gray-500">Shop now</p>
-                    </div>
-                </div>
-
-                <!-- More category cards... -->
-            </div>
-
-            <h2 class="text-2xl font-extrabold text-gray-900 mb-8">Popular Categories</h2>
-            <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-10">
-                <!-- Category cards - 4th row -->
-                <div class="bg-white border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-                    <div class="aspect-w-3 aspect-h-2 bg-gray-100">
-                        <img class="object-cover object-center w-full h-full" src="category4.jpg" alt="Category 4">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-medium text-gray-900">Category 4</h3>
-                        <p class="mt-2 text-sm text-gray-500">Shop now</p>
-                    </div>
-                </div>
-
-                <!-- Category cards - 5th row -->
-                <div class="bg-white border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-                    <div class="aspect-w-3 aspect-h-2 bg-gray-100">
-                        <img class="object-cover object-center w-full h-full" src="category5.jpg" alt="Category 5">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-medium text-gray-900">Category 5</h3>
-                        <p class="mt-2 text-sm text-gray-500">Shop now</p>
-                    </div>
-                </div>
-
-                <!-- Category cards - 6th row -->
-                <div class="bg-white border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-                    <div class="aspect-w-3 aspect-h-2 bg-gray-100">
-                        <img class="object-cover object-center w-full h-full" src="category6.jpg" alt="Category 6">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-medium text-gray-900">Category 6</h3>
-                        <p class="mt-2 text-sm text-gray-500">Shop now</p>
-                    </div>
-                </div>
-
-                <!-- More category cards... -->
-            </div>
-
-            <h2 class="text-2xl font-extrabold text-gray-900 mb-8">Popular Categories</h2>
-            <div class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-10">
-                <!-- Category cards - 7th row -->
-                <div class="bg-white border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-                    <div class="aspect-w-3 aspect-h-2 bg-gray-100">
-                        <img class="object-cover object-center w-full h-full" src="category7.jpg" alt="Category 7">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-medium text-gray-900">Category 7</h3>
-                        <p class="mt-2 text-sm text-gray-500">Shop now</p>
-                    </div>
-                </div>
-
-                <!-- Category cards - 8th row -->
-                <div class="bg-white border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-                    <div class="aspect-w-3 aspect-h-2 bg-gray-100">
-                        <img class="object-cover object-center w-full h-full" src="category8.jpg" alt="Category 8">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-medium text-gray-900">Category 8</h3>
-                        <p class="mt-2 text-sm text-gray-500">Shop now</p>
-                    </div>
-                </div>
-
-                <!-- Category cards - 9th row -->
-                <div class="bg-white border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-                    <div class="aspect-w-3 aspect-h-2 bg-gray-100">
-                        <img class="object-cover object-center w-full h-full" src="category9.jpg" alt="Category 9">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="text-lg font-medium text-gray-900">Category 9</h3>
-                        <p class="mt-2 text-sm text-gray-500">Shop now</p>
-                    </div>
-                </div>
-
-                <!-- More category cards... -->
             </div>
         </div>
-
     </div>
+</div>
+
+  
+
+
+
+            <!-- <div>
+                <h2 class="text-2xl font-bold h-10" id="MeiTansaku-Motors">Piezas de Automóvil Y Accesorios</h2>
+                <div class="grid grid-cols-3 gap-4">
+
+                    <div>
+                        <div class="bg-amber-100">
+                            <img class="ml-7 w-28 flex justify-center" src="https://i.ebayimg.com/images/g/tWIAAOSwjPJc~-7f/s-l225.png" alt="">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bg-amber-100">
+                            <img class="ml-8 w-28 flex justify-center" src="https://i.ebayimg.com/images/g/jncAAOSwSXRc~-57/s-l225.png" alt="">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bg-amber-100">
+                            <img class="ml-8 w-28 flex justify-center" src="https://i.ebayimg.com/images/g/PzwAAOSwdiFc~-7E/s-l225.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                
+                <div *ngFor="let product of products[2]">
+                <!-- Muestra los detalles del producto
+                <p>{{ product.name}}</p>
+                Agrega aquí más detalles del producto si es necesario
+                </div>
+            </div> -->
+
+
+
+            
+
+        <!-- <div>
+            <h2>Ropa, Calzado y Accesorios</h2>
+        </div>
+
+        <div>
+            <h2>Artículos deportivos</h2>
+        </div>
+
+        <div>
+            <h2>Home & Garden</h2>
+        </div>
+
+        <div>
+            <h2>Juguetes y pasatiempos</h2>
+        </div>
+
+        <div>
+            <h2>Equipo y maquinaria industrial</h2>
+        </div>
+
+        <div>
+            <h2>Salud y belleza</h2>
+        </div>
+
+        <div>
+            <h2>Suministros para mascotas</h2>
+        </div>
+
+        <div>
+            <h2>Baby Essentials</h2>
+        </div>
+
+        <div>
+            <h2>Electronics</h2>
+        </div>
+
+        <div>
+            <h2>De colección y arte</h2>
+        </div>
+
+        <div>
+            <h2>Libros, películas y música</h2>
+        </div> -->
