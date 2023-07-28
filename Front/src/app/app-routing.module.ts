@@ -9,6 +9,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AllcategoryComponent } from './components/allcategory/allcategory.component';
 import { ShoppingCartContentComponent } from './components/shopping-cart-content/shopping-cart-content.component';
 import { ServicioAlClienteComponent } from './components/servicioalcliente/servicioalcliente.component';
+import { ProductPageComponent } from './components/product-page/product-page.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,7 @@ const routes: Routes = [
     {path: 'navbar', component: NavbarComponent},
     {path: 'allcategory', component: AllcategoryComponent},
     {path: 'category.name', component: AllcategoryComponent},
+    {path: 'product-page', component: ProductPageComponent},
 
   {
     path:'help',
