@@ -10,6 +10,7 @@ namespace Core.Application.Interfaces.Repositories
     public interface IProductRepository : IGenericRepository<Product>
     {
         Task<Product> GetProductDetails(int id, int commentsPage, int commentsPageSize = 10);
+        Task<Product> GetProductInfo(int id);
         Task<Product> GetProductByName(string name);
         Task<(List<Product>, List<Category>)> SearchProduct(string name, List<int> category_attribute = null);
     }

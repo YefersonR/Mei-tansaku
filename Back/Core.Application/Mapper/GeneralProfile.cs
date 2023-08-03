@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Core.Application.Dtos;
 using Core.Application.DTOS.Account;
+using Core.Application.Feactures.List.Commands.CreateList;
 using Core.Application.ViewModels.User;
 using Core.Domain.Entities;
 using System;
@@ -147,6 +148,20 @@ namespace Core.Application.Mapper
               .ForMember(x => x.Error, opt => opt.Ignore())
               .ReverseMap();
 
+            CreateMap<AddProduct_ListCommand, Product_List>()
+               .ReverseMap();
+
+            CreateMap<CreateShoppingListCommand, Shopping_List>()
+               .ForMember(x => x.Product_Lists, opt => opt.Ignore())
+               .ReverseMap();
+
+            CreateMap<Shopping_ListDTO, Shopping_List>()
+                .ForMember(x => x.Product_Lists, opt => opt.Ignore())
+                .ReverseMap();
+
+            CreateMap<Product_ListDTO, Product_List>()
+                .ForMember(x => x.Shopping_List, opt => opt.Ignore())
+                .ReverseMap();
         }
 
     }

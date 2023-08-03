@@ -30,6 +30,8 @@ namespace Infrastructure.Persistence
             services.AddTransient<ICommentRepository, CommentRepository>();
             services.AddTransient<IValue_AttributeRepository, Value_AttributesRepository>();
             services.AddTransient<IAttribute_ProductRepository, Attribute_ProductRepository>();
+            services.AddTransient<IShopping_ListRepository, Shopping_ListRepository>();
+            services.AddTransient<IProduct_ListRepository, Product_ListRepository>();
         }
 
     }

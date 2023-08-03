@@ -63,5 +63,9 @@ namespace Infrastructure.Persistence.Repositories
             return (product, categories);
         }
 
+        public async Task<Product> GetProductInfo(int id)
+        {
+            return await _dbContext.Set<Product>().FirstAsync();
+        }
     }
 }

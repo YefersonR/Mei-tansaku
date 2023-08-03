@@ -42,6 +42,8 @@ namespace Infrastructure.Persistence.Context
                     case EntityState.Added:
                         entry.Entity.CreatedDate = DateTime.Now;
                         entry.Entity.CreatedBy = "Admin";
+                        entry.Entity.LastUpdatedDate = DateTime.Now;
+                        entry.Entity.LastUpdatedBy = "Admin";
                         break;
                     case EntityState.Modified:
                         entry.Entity.LastUpdatedDate = DateTime.Now;
@@ -75,6 +77,7 @@ namespace Infrastructure.Persistence.Context
             modelBuilder.Entity<Tickets>().ToTable("Tickets");
             modelBuilder.Entity<Value_Attribute>().ToTable("Value_attribute");
             modelBuilder.Entity<Attribute_Product>().ToTable("Attribute_Product");
+            modelBuilder.Entity<Shopping_List>().ToTable("Shopping_List");
 
             #endregion
 
@@ -99,6 +102,7 @@ namespace Infrastructure.Persistence.Context
             modelBuilder.Entity<Tickets>().HasKey(tickets => tickets.ID);
             modelBuilder.Entity<Value_Attribute>().HasKey(valueAttribute => valueAttribute.ID);
             modelBuilder.Entity<Attribute_Product>().HasKey(attributeProduct => attributeProduct.ID);
+            modelBuilder.Entity<Shopping_List>().HasKey(shopping_List => shopping_List.ID);
 
             #endregion
 
@@ -196,6 +200,12 @@ namespace Infrastructure.Persistence.Context
              .HasMany(x => x.Attribute_Product)
              .WithOne(m => m.Product)
              .HasForeignKey(x => x.ProductID)
+             .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Shopping_List>()
+             .HasMany(x => x.Product_Lists)
+             .WithOne(m => m.Shopping_List)
+             .HasForeignKey(x => x.ShoppingListID)
              .OnDelete(DeleteBehavior.NoAction);
 
             #endregion

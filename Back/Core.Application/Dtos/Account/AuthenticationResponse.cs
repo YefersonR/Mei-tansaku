@@ -13,8 +13,6 @@ namespace Core.Application.DTOS.Account
 
         public List<string> Roles { get; set; }
         public bool IsVerified { get; set; }
-        public bool HasError { get; set; } = false;
-        public string Error { get; set; }
 
         public string JWToken { get; set; }
         [JsonIgnore]

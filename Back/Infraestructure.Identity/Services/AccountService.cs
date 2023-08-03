@@ -14,6 +14,7 @@ using Core.Application.DTOS.Account;
 using Application.Enum;
 using Core.Application.Dtos.Email;
 using Core.Application.Interface.Services;
+using Core.Application.Dtos.Response;
 
 namespace Infrastructure.Identity.Services
 {
@@ -87,42 +88,48 @@ namespace Infrastructure.Identity.Services
             };
         }
 
-        public async Task<AuthenticationResponse> Authentication(AuthenticationRequest request)
+        public async Task<GenericApiResponse<AuthenticationResponse>> Authentication(AuthenticationRequest request)
             {
-            var response = new AuthenticationResponse();
+            GenericApiResponse<AuthenticationResponse> response = new GenericApiResponse<AuthenticationResponse>();
+            response.Payload = new AuthenticationResponse();
             var User = await _userManager.FindByNameAsync(request.UserName);
             if (User == null)
             {
-                response.HasError = true;
-                response.Error = $"No Account Register with {request.UserName}";
+                response.Success = false;
+                response.Statuscode = 404;
+                response.Message = $"No Account Register with {request.UserName}";
                 return response;
             }
             var result = await _signInManager.PasswordSignInAsync(User.UserName, request.Password, false, lockoutOnFailure: false);
             if (!result.Succeeded)
             {
-                response.HasError = true;
-                response.Error = $"Invalid Password";
+                response.Success = false;
+                response.Message = $"Invalid Password";
+                response.Statuscode = 404;
                 return response;
             }
             if (!User.EmailConfirmed)
             {
-                response.HasError = true;
-                response.Error = $"Account not confirm for {request.UserName}";
+                response.Success = false;
+                response.Statuscode = 404;
+                response.Message = $"Account not confirm for {request.UserName}";
                 return response;
             }
 
             JwtSecurityToken jwtSecurityToken =await GenerateJWToken(User);
+            response.Statuscode = 200;
+            response.Success = true;
 
-            response.Id = User.Id;
-            response.Name = User.Name;
-            response.LastName = User.LastName;
-            response.Email = User.Email;
-            response.IsVerified = User.EmailConfirmed;
+            response.Payload.Id = User.Id;
+            response.Payload.Name = User.Name;
+            response.Payload.LastName = User.LastName;
+            response.Payload.Email = User.Email;
+            response.Payload.IsVerified = User.EmailConfirmed;
             var roles = await _userManager.GetRolesAsync(User).ConfigureAwait(false);
-            response.Roles = roles.ToList();
-            response.IsVerified = User.EmailConfirmed;
-            response.JWToken = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
-            response.RefreshToken = GenerateRefreshToken().Token;
+            response.Payload.Roles = roles.ToList();
+            response.Payload.IsVerified = User.EmailConfirmed;
+            response.Payload.JWToken = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
+            response.Payload.RefreshToken = GenerateRefreshToken().Token;
 
             return response;
         }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Application.Dtos.Response;
 using Core.Application.DTOS.Account;
 using Core.Application.Inferfaces.Service;
 using Core.Application.ViewModels.User;
@@ -15,10 +16,10 @@ namespace Core.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<AuthenticationResponse>Login(LoginViewModel login)
+        public async Task<GenericApiResponse<AuthenticationResponse>> Login(LoginViewModel login)
         {
             AuthenticationRequest request = _mapper.Map<AuthenticationRequest>(login);
-            AuthenticationResponse response = await _accountService.Authentication(request);
+            GenericApiResponse<AuthenticationResponse> response = await _accountService.Authentication(request);
             return response;
         }
         public async Task SignOut()
