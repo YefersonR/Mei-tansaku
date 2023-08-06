@@ -134,14 +134,15 @@ namespace Infrastructure.Identity.Services
             return response;
         }
 
-        public async Task<RegisterResponse> Register(RegisterRequest request, string origin)
+        public async Task<GenericApiResponse<RegisterResponse>> Register(RegisterRequest request, string origin)
         {
-            var response = new RegisterResponse();
+            
+            var response = new GenericApiResponse<RegisterResponse>();
             var UserNameExist = await _userManager.FindByNameAsync(request.UserName);
             if (UserNameExist != null)
             {
-                response.HasError = true;
-                response.Error = $"Username {request.UserName} is already taken";
+                response.Success = false;
+                response.Message = $"Username {request.UserName} is already taken";
                 return response;
             }
             
@@ -149,8 +150,8 @@ namespace Infrastructure.Identity.Services
             
             if (EmailExist != null)
             {
-                response.HasError = true;
-                response.Error = $"Email {request.Email} is already registered";
+                response.Success = false;
+                response.Message = $"Email {request.Email} is already registered";
                 return response;
             }
             var user = new ApplicationUser
@@ -166,13 +167,13 @@ namespace Infrastructure.Identity.Services
             var result = await _userManager.CreateAsync(user, request.Password);
             if (!result.Succeeded)
             {
-                response.HasError = true;
-                response.Error = "A error occurred trying to register the user.";
+                response.Success = false;
+                response.Message = "A error occurred trying to register the user.";
                 return response;
 
             }
-            //var regiteredUser = await _userManager.FindByEmailAsync(user.Email);
-            //response.Id = regiteredUser.Id;
+            var regiteredUser = await _userManager.FindByEmailAsync(user.Email);
+            response.Payload.Id = regiteredUser.Id;
             //await _userManager.AddToRoleAsync(user, Roles.User.ToString());
             //var verificationUrl = await SendVerificationEMailUrl(user, origin);
             //await _emailService.SendAsync(new EmailRequest()
@@ -184,20 +185,20 @@ namespace Infrastructure.Identity.Services
             return response;
         }
         
-        public async Task<GenericResponse> UpdateUser(string userId, RegisterRequest request)
-        {
-            var response = new RegisterResponse();
-            var user = await _userManager.FindByIdAsync(userId);
-            var result = await _userManager.UpdateAsync(user);
-            if (!result.Succeeded)
-            {
-                response.HasError = true;
-                response.Error = "A error occurred trying to register the user.";
-                return response;
-
-            }
-            return response;
-        }
+        //public async Task<GenericResponse> UpdateUser(string userId, RegisterRequest request)
+        //{
+        //    var response = new RegisterResponse();
+        //    var user = await _userManager.FindByIdAsync(userId);
+        //    var result = await _userManager.UpdateAsync(user);
+        //    if (!result.Succeeded)
+        //    {
+        //        response.HasError = true;
+        //        response.Error = "A error occurred trying to register the user.";
+        //        return response;
+        
+        //   }
+        //    return response;
+        //}
 
         private async Task<string> SendVerificationEMailUrl(ApplicationUser user, string origin)
         {

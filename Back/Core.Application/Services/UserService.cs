@@ -26,17 +26,17 @@ namespace Core.Application.Services
         {
             await _accountService.SignOut();
         }
-        public async Task<RegisterResponse> Regiter(UserSaveViewModel viewModel, string origin)
+        public async Task<GenericApiResponse<RegisterResponse>> Regiter(UserSaveViewModel viewModel, string origin)
         {
             RegisterRequest request = _mapper.Map<RegisterRequest>(viewModel);
             var response = await _accountService.Register(request,origin);
             return response;
         }
-        public async Task UpdateUser(string Id,UserSaveViewModel viewModel)
-        {
-            RegisterRequest request = _mapper.Map<RegisterRequest>(viewModel);
-            await _accountService.UpdateUser(Id, request);
-        }
+        //public async Task UpdateUser(string Id,UserSaveViewModel viewModel)
+        //{
+        //    RegisterRequest request = _mapper.Map<RegisterRequest>(viewModel);
+        //    await _accountService.UpdateUser(Id, request);
+        //}
 
         public async Task<string> EmailConfirm(string userId, string token)
         {

@@ -33,9 +33,6 @@ namespace Core.Application.ViewModels.User
         [DataType(DataType.Text)]
         public string Phone { get; set; }
 
-        public string UserType { get; set; }
-        public bool HasError{ get; set; }
-        public string Error { get; set; }
-
+        //public string UserType { get; set; }
     }
 }

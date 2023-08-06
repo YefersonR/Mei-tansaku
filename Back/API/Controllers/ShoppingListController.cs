@@ -1,6 +1,7 @@
 ﻿using Application.Enum;
 using Core.Application.Feactures.Comments.Commands.CreateComments;
 using Core.Application.Feactures.Comments.Queries.GetAllCommentsByProduct;
+using Core.Application.Feactures.Comments.Queries.GetListsByUserId;
 using Core.Application.Feactures.List.Commands.CreateList;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,21 +17,46 @@ namespace MeiTansaku.WebApi.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
 
-        [HttpPost("AddProduct")]
+        [HttpPost("GetAllList")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [Authorize(Roles = "User")]
-        public async Task<IActionResult> AddProduct(AddProduct_ListCommand command)
+        public async Task<IActionResult> GetAllListById()
         {
+            var userIdClaim = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type.Contains("uid"))?.Value;
             try
             {
                 if (!ModelState.IsValid)
                 {
                     return BadRequest();
                 }
-                
-                return Ok(await Mediator.Send(command));
+
+                return Ok(await Mediator.Send(new GetListsByUserIdQuery { UserID = userIdClaim }));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex);
+            }
+        }
+
+        [HttpPost("CreateList")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [Authorize(Roles = "User")]
+        public async Task<IActionResult> CreateShoppingList(string Title)
+        {
+
+            var userIdClaim = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type.Contains("uid"))?.Value;
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+
+                return Ok(await Mediator.Send(new CreateShoppingListCommand { Title = Title, UserID = userIdClaim }));
             }
             catch (Exception ex)
             {
@@ -60,16 +86,13 @@ namespace MeiTansaku.WebApi.Controllers
             }
         }
 
-
-        [HttpPost("CreateList")]
+        [HttpPost("AddProduct")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [Authorize(Roles = "User")]
-        public async Task<IActionResult> CreateShoppingList(string Title)
+        public async Task<IActionResult> AddProduct(AddProduct_ListCommand command)
         {
-            
-            var userIdClaim = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type.Contains("uid"))?.Value;
             try
             {
                 if (!ModelState.IsValid)
@@ -77,7 +100,7 @@ namespace MeiTansaku.WebApi.Controllers
                     return BadRequest();
                 }
 
-                return Ok(await Mediator.Send(new CreateShoppingListCommand { Title = Title, UserID = "wrwrw" }));
+                return Ok(await Mediator.Send(command));
             }
             catch (Exception ex)
             {

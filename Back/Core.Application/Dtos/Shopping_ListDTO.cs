@@ -10,6 +10,7 @@ namespace Core.Application.Dtos
 {
     public class Shopping_ListDTO
     {
+        public int ID { get; set; }
         public string UserID { get; set; }
         public bool Default { get; set; }
         public string Title { get; set; }

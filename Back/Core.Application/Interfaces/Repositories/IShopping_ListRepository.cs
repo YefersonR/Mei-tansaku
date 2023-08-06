@@ -9,7 +9,8 @@ namespace Core.Application.Interfaces.Repositories
 {
     public interface IShopping_ListRepository : IGenericRepository<Shopping_List>
     {
-        Task<Shopping_List> GetAll (int Id);
+        Task<Shopping_List> GetAll(int Id);
+        Task<List<Shopping_List>> GetAllByUserID(string Id);
 
     }
 }

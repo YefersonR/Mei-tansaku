@@ -19,14 +19,14 @@ namespace MeiTansaku.WebApi.Controllers
         }
 
         [HttpPost("Login")]
-        public async Task<IActionResult> Authentication(LoginViewModel request)
+        public async Task<IActionResult> Authentication([FromBody] LoginViewModel request)
         {
             return Ok(await _userService.Login(request));
         }
 
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(UserSaveViewModel request)
+        public async Task<IActionResult> Register([FromBody] UserSaveViewModel request)
         {
             var origin = Request.Headers["Origin"];
             return Ok(await _userService.Regiter(request, origin));

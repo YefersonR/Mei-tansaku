@@ -25,5 +25,10 @@ namespace Infrastructure.Persistence.Repositories
                 .Include(x => x.Product_Lists)
                 .FirstAsync(x => x.ID == Id);
         }
+
+        public async Task<List<Shopping_List>> GetAllByUserID(string Id)
+        {
+            return await _dbContext.Set<Shopping_List>().Where(x => x.UserID == Id).ToListAsync();
+        }
     }
 }

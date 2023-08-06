@@ -1,6 +1,6 @@
 ﻿namespace Core.Application.DTOS.Account
 {
-    public class RegisterResponse : GenericResponse
+    public class RegisterResponse
     {
         public string Id { get; set; }
     }

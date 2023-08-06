@@ -65,7 +65,8 @@ namespace Infrastructure.Persistence.Repositories
 
         public async Task<Product> GetProductInfo(int id)
         {
-            return await _dbContext.Set<Product>().FirstAsync();
+            return await _dbContext.Set<Product>().Where(x => x.ID == id).FirstAsync();
         }
+
     }
 }

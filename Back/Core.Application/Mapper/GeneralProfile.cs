@@ -127,16 +127,16 @@ namespace Core.Application.Mapper
                 .ReverseMap();
 
             CreateMap<AuthenticationResponse, UserSaveViewModel>()
-                .ForMember(x => x.HasError, opt => opt.Ignore())
-                .ForMember(x => x.Error, opt => opt.Ignore())
+                //.ForMember(x => x.HasError, opt => opt.Ignore())
+                //.ForMember(x => x.Error, opt => opt.Ignore())
                 .ReverseMap();
 
             CreateMap<AuthenticationRequest, LoginViewModel>()
                .ReverseMap();
 
             CreateMap<RegisterRequest, UserSaveViewModel>()
-               .ForMember(x => x.HasError, opt => opt.Ignore())
-               .ForMember(x => x.Error, opt => opt.Ignore())
+               //.ForMember(x => x.HasError, opt => opt.Ignore())
+               //.ForMember(x => x.Error, opt => opt.Ignore())
                .ReverseMap();
 
             CreateMap<ForgotPasswordRequest, ForgotPasswordViewModel>()
