@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Core.Application.Dtos;
 using Core.Application.Dtos.Response;
+using Core.Application.Helpers.UploadImg;
 using Core.Application.Interfaces.Repositories;
 using Core.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,15 +28,18 @@ namespace Core.Application.Feactures.Products.Commands.CreateProduct
         public double Weight { get; set; }
         public int Stock { get; set; }
         public bool Private { get; set; }
+        public List<IFormFile> Images { get; set; }
     }
     public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, GenericApiResponse<bool>>
     {
         private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
-        public CreateProductCommandHandler(IProductRepository productRepository, IMapper mapper)
+        private readonly IProduct_ImagesRepository _product_ImagesRepository;
+        public CreateProductCommandHandler(IProductRepository productRepository, IMapper mapper, IProduct_ImagesRepository product_ImagesRepository)
         {
             _productRepository = productRepository;
             _mapper = mapper;
+            _product_ImagesRepository = product_ImagesRepository;
         }
 
         public async Task<GenericApiResponse<bool>> Handle(CreateProductCommand request, CancellationToken cancellationToken)
@@ -43,10 +48,21 @@ namespace Core.Application.Feactures.Products.Commands.CreateProduct
             var data = await _productRepository.Add(_mapper.Map<Product>(request));
             if(data !=  null)
             {
+                ImageUp imageUp = new ImageUp();
                 response.Message = "Product Added";
                 response.Payload = true;
                 response.Success = true;
                 response.Statuscode = 200;
+
+                foreach(var img in request.Images)
+                {
+                    var uri = imageUp.UploadFile(img, data.ID);
+                    Product_Images imgU = new Product_Images();
+                    imgU.ProductID = data.ID;
+                    imgU.ImgUri = uri;
+                    await _product_ImagesRepository.Add(imgU);
+                }
+
                 return response;
             }
             response.Message = "A Error ocurred";
