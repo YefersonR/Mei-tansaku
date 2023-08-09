@@ -12,6 +12,7 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class NavbarComponent implements OnInit {
 
+  isOpening = false;
   isOpen = false;
   categories: any[] = [];
   isDropdownOpen = false;
@@ -21,6 +22,10 @@ export class NavbarComponent implements OnInit {
 
   openDropdown() {
     this.isOpen = !this.isOpen;
+  }
+
+  openDropdownn() {
+    this.isOpening = !this.isOpening;
   }
   
 
