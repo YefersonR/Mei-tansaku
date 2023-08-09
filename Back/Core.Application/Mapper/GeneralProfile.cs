@@ -2,6 +2,7 @@
 using Core.Application.Dtos;
 using Core.Application.DTOS.Account;
 using Core.Application.Feactures.List.Commands.CreateList;
+using Core.Application.Feactures.Products.Commands.CreateProduct;
 using Core.Application.ViewModels.User;
 using Core.Domain.Entities;
 using System;
@@ -161,6 +162,9 @@ namespace Core.Application.Mapper
 
             CreateMap<Product_ListDTO, Product_List>()
                 .ForMember(x => x.Shopping_List, opt => opt.Ignore())
+                .ReverseMap();
+
+            CreateMap<Product, CreateProductCommand>()
                 .ReverseMap();
         }
 

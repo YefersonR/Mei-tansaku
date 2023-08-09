@@ -11,7 +11,7 @@ namespace Core.Domain.Entities
     {
         public int CategoryID { get; set; }
         public int StateID { get; set; }
-        public int SellerID { get; set; }
+        public string SellerID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Availability { get; set; }

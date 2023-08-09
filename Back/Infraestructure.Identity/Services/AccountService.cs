@@ -134,10 +134,11 @@ namespace Infrastructure.Identity.Services
             return response;
         }
 
-        public async Task<GenericApiResponse<RegisterResponse>> Register(RegisterRequest request, string origin)
+        public async Task<GenericApiResponse<RegisterResponse>> Register(RegisterRequest request, int typeUser)
         {
             
             var response = new GenericApiResponse<RegisterResponse>();
+            response.Payload = new RegisterResponse();
             var UserNameExist = await _userManager.FindByNameAsync(request.UserName);
             if (UserNameExist != null)
             {
@@ -168,12 +169,22 @@ namespace Infrastructure.Identity.Services
             if (!result.Succeeded)
             {
                 response.Success = false;
-                response.Message = "A error occurred trying to register the user.";
+                response.Message = string.Join(", ", result.Errors.Select(x => x.Description));
                 return response;
 
             }
             var regiteredUser = await _userManager.FindByEmailAsync(user.Email);
             response.Payload.Id = regiteredUser.Id;
+
+            if(typeUser == 0)
+            {
+                await _userManager.AddToRoleAsync(user, Roles.User.ToString());
+            }
+            else
+            {
+                await _userManager.AddToRoleAsync(user, Roles.Admin.ToString());
+            }
+
             //await _userManager.AddToRoleAsync(user, Roles.User.ToString());
             //var verificationUrl = await SendVerificationEMailUrl(user, origin);
             //await _emailService.SendAsync(new EmailRequest()

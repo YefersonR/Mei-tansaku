@@ -28,8 +28,17 @@ namespace MeiTansaku.WebApi.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserSaveViewModel request)
         {
-            var origin = Request.Headers["Origin"];
-            return Ok(await _userService.Regiter(request, origin));
+            //var origin = Request.Headers["Origin"];
+            int typeUser = 0;
+            return Ok(await _userService.Regiter(request, typeUser));
+        }
+
+        [HttpPost("registerSeller")]
+        public async Task<IActionResult> RegisterAdmin([FromBody] UserSaveViewModel request)
+        {
+            //var origin = Request.Headers["Origin"];
+            int typeUser = 1;
+            return Ok(await _userService.Regiter(request, typeUser));
         }
     }
 }
