@@ -29,7 +29,9 @@ namespace Core.Application.Feactures.Comments.Queries.GetAllCommentsByProduct
         public async Task<List<CommentsDTO>> Handle(GetAllCommentsByProductQuery request, CancellationToken cancellationToken)
         {
             List<Comment> comments = await _commentRepository.GetAllCommentByProduct(request.ProductID);
+            
             List<CommentsDTO> commentsDTO = _mapper.Map<List<CommentsDTO>>(comments);
+           
             return commentsDTO;
         }
     }

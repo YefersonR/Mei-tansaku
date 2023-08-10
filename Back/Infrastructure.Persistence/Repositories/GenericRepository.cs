@@ -32,7 +32,8 @@ namespace Infrastructure.Persistence.Repositories
         }
         public virtual async Task Delete(int id)
         {
-            await _dbContext.Set<T>().FindAsync(id);
+            var type = await _dbContext.Set<T>().FindAsync(id);
+            _dbContext!.Remove(type);
             await _dbContext.SaveChangesAsync();
         }
         protected IQueryable<T> ApplySpecification(Specification<T> specifications)

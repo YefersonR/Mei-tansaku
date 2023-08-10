@@ -13,7 +13,6 @@ namespace Core.Application.Feactures.Comments.Commands.CreateComments
 {
     public class CreateCommentCommand :IRequest<int>
     {
-        public int ID { get; set; }
         public int ProductID { get; set; }
         public string UserID { get; set; }
         public string Description { get; set; }

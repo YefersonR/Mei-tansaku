@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Core.Application.Dtos;
 using Core.Application.DTOS.Account;
+using Core.Application.Feactures.Comments.Commands.CreateComments;
 using Core.Application.Feactures.List.Commands.CreateList;
 using Core.Application.ViewModels.User;
 using Core.Domain.Entities;
@@ -162,6 +163,17 @@ namespace Core.Application.Mapper
             CreateMap<Product_ListDTO, Product_List>()
                 .ForMember(x => x.Shopping_List, opt => opt.Ignore())
                 .ReverseMap();
+
+            CreateMap<CommentsDTO, Comment>()
+                .ForMember(x=>x.Product, opt=>opt.Ignore())
+                .ForMember(x=>x.Helpfuls, opt=>opt.Ignore())
+                .ReverseMap()
+                .ForMember(x=>x.QuantityHelpful, opt=>opt.Ignore());
+
+            CreateMap<CreateCommentCommand, Comment>()
+               .ForMember(x=>x.ID, opt=>opt.Ignore())
+               .ReverseMap()
+               ;
         }
 
     }
