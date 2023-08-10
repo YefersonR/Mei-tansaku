@@ -1,0 +1,118 @@
+/* Agregamos estilos para el contenedor principal */
+.container {
+  max-width: 1200px; /* Ancho máximo del contenedor */
+  margin: 0 auto; /* Centramos el contenedor en la página */
+  padding: 20px; /* Añadimos un poco de espacio alrededor del contenido */
+}
+
+/* Agregamos estilos para la lista de deseos */
+.lista-deseos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.producto {
+  flex: 0 0 calc(33.33% - 20px); /* Para que haya 3 productos por fila */
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+}
+
+.producto img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.producto h3 {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.producto p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.producto button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.producto button i {
+  margin-right: 5px;
+}
+
+.producto .eliminar-btn {
+  background-color: #dc3545;
+}
+
+.producto .ver-detalles-btn {
+  background-color: #17a2b8;
+}
+
+.producto .compartir-btn {
+  background-color: #28a745;
+}
+
+/* Estilos para la vista rápida */
+.vista-rapida {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vista-rapida .producto {
+  flex: 0 0 auto;
+  max-width: 500px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 5px;
+}
+
+.vista-rapida .producto img {
+  height: 300px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.vista-rapida .producto h3 {
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+.vista-rapida .producto p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.vista-rapida .cerrar-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}

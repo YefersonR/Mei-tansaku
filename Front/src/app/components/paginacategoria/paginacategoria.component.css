@@ -1,0 +1,60 @@
+/* Estilo para la paginación */
+.pagination {
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.pagination li {
+  display: inline;
+  margin: 0 4px;
+}
+
+.pagination li button {
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination li button:hover:not([disabled]) {
+  background-color: #f0f0f0;
+}
+
+.pagination li button.active {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.pagination li button.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Estilo para los botones de navegación */
+.pagination .btn-navigation {
+  font-size: 16px;
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination .btn-navigation:hover:not([disabled]) {
+  background-color: #f0f0f0;
+}
+
+
+app-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
