@@ -17,7 +17,10 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { CarritodentroComponent } from './components/carritodentro/carritodentro.component';
 import { ServicioAlClienteComponent } from './components/servicioalcliente/servicioalcliente.component';
 import { ShoppingCartContentComponent } from './components/shopping-cart-content/shopping-cart-content.component';
+import { PaginaCategoriaComponent } from './components/paginacategoria/paginacategoria.component';
 import { AllcategoryComponent } from './components/allcategory/allcategory.component';
+import { ListadeseosComponent } from './components/listadeseos/listadeseos.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 
 @NgModule({
@@ -36,6 +39,9 @@ import { AllcategoryComponent } from './components/allcategory/allcategory.compo
     HeroDetailComponent,
     CarritodentroComponent,
     ServicioAlClienteComponent,
+    PaginaCategoriaComponent,
+    ListadeseosComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,73 @@
+<div class="flex">
+  <!-- Filtro de precio -->
+  <div class="w-1/4 p-4">
+    <h2 class="text-xl font-bold mb-4">Filtrar por precio:</h2>
+    <form>
+      <div class="mb-4">
+        <label for="precioMinimo" class="block">Precio mínimo:</label>
+        <input type="number" id="precioMinimo" name="precioMinimo" [(ngModel)]="precioMinimo"
+          class="w-full border rounded-md p-2">
+      </div>
+      <div class="mb-4">
+        <label for="precioMaximo" class="block">Precio máximo:</label>
+        <input type="number" id="precioMaximo" name="precioMaximo" [(ngModel)]="precioMaximo"
+          class="w-full border rounded-md p-2">
+      </div>
+      <div>
+        <button type="button" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+          (click)="filtrarProductos()">Filtrar</button>
+        <button type="button" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded ml-2"
+          (click)="limpiarFiltro()">Limpiar</button>
+      </div>
+    </form>
+
+    <h2 class="text-xl font-bold mt-6">Ordenar alfabéticamente:</h2>
+    <div>
+      <button type="button" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+        (click)="cambiarOrdenAlfabetico()">Cambiar Orden</button>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- Listado de productos -->
+  <div class="w-3/4 p-4">
+    <h1 class="text-3xl font-bold mb-6">Categoria</h1>
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+
+      <div *ngFor="let producto of paginatedItems"
+        class="p-4 border rounded-lg shadow-md">
+
+        <img [src]="producto.imageUrl" class="w-full h-48 object-cover mb-4 rounded">
+        <p class="text-gray-600">{{ producto.description }}</p>
+        <h3 class="text-lg font-semibold mb-2">{{ producto.name }}</h3>
+        <p class="text-green-500 font-bold mt-2">$ {{ producto.price }}</p>
+
+        <div class="flex items-center mt-2">
+          <span class="mr-1 text-yellow-500">&#9733;</span>
+          <span class="text-sm text-gray-600">{{ producto.rating }}</span>
+        </div>
+
+        <button class="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+          Comprar ahora
+        </button>
+      </div>
+    </div>
+
+      <app-pagination
+      [currentPage]="currentPage"
+      [totalPages]="totalPages"
+      (pageChange)="onPageChange($event)">
+      </app-pagination>
+    </div>
+
+
+
+
+
+
+
+
+</div>

@@ -6,6 +6,9 @@ import { RegisterComponent } from './pages/auth/register/register.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { CategoryComponent } from './components/category/category.component';
 import { ServicioAlClienteComponent } from './components/servicioalcliente/servicioalcliente.component';
+import { PaginaCategoriaComponent } from './components/paginacategoria/paginacategoria.component';
+import { ListadeseosComponent } from './components/listadeseos/listadeseos.component';
+import { CarritodentroComponent } from './components/carritodentro/carritodentro.component';
 
 const routes: Routes = [
   {
@@ -36,6 +39,18 @@ const routes: Routes = [
       }
     ],
     pathMatch:'full'
+  },
+  {
+    path:'categoria',
+    component:PaginaCategoriaComponent
+  },
+  {
+    path:'carrito',
+    component:CarritodentroComponent
+  },
+  {
+    path:'listadeseos',
+    component:ListadeseosComponent
   },
   {
     path:'help',
