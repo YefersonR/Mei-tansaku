@@ -7,7 +7,6 @@ import { AuthComponent } from './pages/auth/auth.component';
 import { CategoryComponent } from './components/category/category.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AllcategoryComponent } from './components/allcategory/allcategory.component';
-import { ShoppingCartContentComponent } from './components/shopping-cart-content/shopping-cart-content.component';
 import { ServicioAlClienteComponent } from './components/servicioalcliente/servicioalcliente.component';
 import { PaginaCategoriaComponent } from './components/paginacategoria/paginacategoria.component';
 import { ListadeseosComponent } from './components/listadeseos/listadeseos.component';
