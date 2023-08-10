@@ -16,7 +16,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { CarritodentroComponent } from './components/carritodentro/carritodentro.component';
 import { ServicioAlClienteComponent } from './components/servicioalcliente/servicioalcliente.component';
 import { ShoppingCartContentComponent } from './components/shopping-cart-content/shopping-cart-content.component';
+import { PaginaCategoriaComponent } from './components/paginacategoria/paginacategoria.component';
 import { AllcategoryComponent } from './components/allcategory/allcategory.component';
+import { ListadeseosComponent } from './components/listadeseos/listadeseos.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 import { ProductComponent } from './components/product/product.component';
 import { ShopByCategoryComponent } from './components/shop-by-category/shop-by-category.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
@@ -39,6 +42,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     FooterComponent,
     CarritodentroComponent,
     ServicioAlClienteComponent,
+    PaginaCategoriaComponent,
+    ListadeseosComponent,
+    PaginationComponent,
     ProductComponent,
     ShopByCategoryComponent,
     CarouselComponent,

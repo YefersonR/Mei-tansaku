@@ -9,6 +9,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AllcategoryComponent } from './components/allcategory/allcategory.component';
 import { ShoppingCartContentComponent } from './components/shopping-cart-content/shopping-cart-content.component';
 import { ServicioAlClienteComponent } from './components/servicioalcliente/servicioalcliente.component';
+import { PaginaCategoriaComponent } from './components/paginacategoria/paginacategoria.component';
+import { ListadeseosComponent } from './components/listadeseos/listadeseos.component';
+import { CarritodentroComponent } from './components/carritodentro/carritodentro.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
 
 const routes: Routes = [
@@ -46,6 +49,18 @@ const routes: Routes = [
     {path: 'category.name', component: AllcategoryComponent},
     {path: 'product-page', component: ProductPageComponent},
 
+  {
+    path:'categoria',
+    component:PaginaCategoriaComponent
+  },
+  {
+    path:'carrito',
+    component:CarritodentroComponent
+  },
+  {
+    path:'listadeseos',
+    component:ListadeseosComponent
+  },
   {
     path:'help',
     component:ServicioAlClienteComponent
