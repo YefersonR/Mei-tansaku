@@ -18,6 +18,11 @@ import { CarritodentroComponent } from './components/carritodentro/carritodentro
 import { ServicioAlClienteComponent } from './components/servicioalcliente/servicioalcliente.component';
 import { ShoppingCartContentComponent } from './components/shopping-cart-content/shopping-cart-content.component';
 import { AllcategoryComponent } from './components/allcategory/allcategory.component';
+import { ProductComponent } from './components/product/product.component';
+import { ShopByCategoryComponent } from './components/shop-by-category/shop-by-category.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { ProductPageComponent } from './components/product-page/product-page.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -36,6 +41,11 @@ import { AllcategoryComponent } from './components/allcategory/allcategory.compo
     HeroDetailComponent,
     CarritodentroComponent,
     ServicioAlClienteComponent,
+    ProductComponent,
+    ShopByCategoryComponent,
+    CarouselComponent,
+    ProductPageComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

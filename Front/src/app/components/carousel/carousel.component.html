@@ -1,0 +1,14 @@
+<div class="carousel-container overflow-hidden w-full">
+    <div class="carousel-track w-full flex" [style.transform]="'translateX(-' + currentSlideIndex * 100 + '%)'">
+      <ng-container *ngFor="let slide of slides">
+        <div class="carousel-slide flex-shrink-0">
+          <img [src]="slide.imgSrc" [alt]="slide.alt" class="w-full h-auto">
+        </div>
+      </ng-container>
+    </div>
+    <div class="carousel-controls mt-2 text-center">
+      <button class="btn btn-secondary mx-1" (click)="prevSlide()">Anterior</button>
+      <button class="btn btn-secondary mx-1" (click)="nextSlide()">Siguiente</button>
+    </div>
+  </div>
+  
