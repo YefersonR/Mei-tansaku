@@ -13,7 +13,7 @@ namespace Core.Application.Feactures.Products.Queries.GetProductById
     public class GetProductDetailsQuery : IRequest<ProductResponseDTO>
     {
         public int ID { get; set; }
-        public int commentsPage { get; set; }
+        public int commentsPage { get; set; } = 1;
     }
     public class GetProductByIdQueryHandler : IRequestHandler<GetProductDetailsQuery, ProductResponseDTO>
     {

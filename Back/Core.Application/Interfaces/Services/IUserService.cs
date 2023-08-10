@@ -8,7 +8,7 @@ namespace Core.Application.Inferfaces.Service
     {
         Task<GenericApiResponse<AuthenticationResponse>> Login(LoginViewModel login);
         Task SignOut();
-        Task<GenericApiResponse<RegisterResponse>> Regiter(UserSaveViewModel viewModel, string origin);
+        Task<GenericApiResponse<RegisterResponse>> Regiter(UserSaveViewModel viewModel, int typeUser);
         //Task UpdateUser(string Id, UserSaveViewModel viewModel);
         Task<string> EmailConfirm(string userId, string token);
         Task<GenericResponse> ForgotPassword(ForgotPasswordViewModel request, string origin);

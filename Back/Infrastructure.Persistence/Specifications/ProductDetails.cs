@@ -13,7 +13,6 @@ namespace Infrastructure.Persistence.Specifications
         {
             AddInclude(product => product.Product_Images);
             AddInclude(product => product.Comments);
-            
         }
 
     }

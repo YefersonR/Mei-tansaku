@@ -21,7 +21,7 @@ namespace Infrastructure.Persistence.Repositories
             _attribute_ProductRepository = attribute_ProductRepository;
         }
 
-        public async Task<Product> GetProductDetails(int id, int commentsPage, int commentsPageSize=10)
+        public async Task<Product> GetProductDetails(int id, int commentsPage, int commentsPageSize)
         {
             var product =  await ApplySpecification(new ProductDetails(id)).FirstAsync();
             if(product is not null)
