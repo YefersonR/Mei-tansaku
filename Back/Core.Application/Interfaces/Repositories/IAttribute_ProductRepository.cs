@@ -10,5 +10,6 @@ namespace Core.Application.Interfaces.Repositories
     public interface IAttribute_ProductRepository : IGenericRepository<Attribute_Product>
     {
         Task<bool> GetRelations(int valor, int Id);
+        //Task<List<Attribute_Product>> GetByCategoryID(int Id);
     }
 }

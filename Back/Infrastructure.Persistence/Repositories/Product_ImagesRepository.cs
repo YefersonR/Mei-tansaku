@@ -1,6 +1,7 @@
 ﻿using Core.Application.Interfaces.Repositories;
 using Core.Domain.Entities;
 using Infrastructure.Persistence.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,19 @@ namespace Infrastructure.Persistence.Repositories
         public Product_ImagesRepository(DBContext dbContext) : base(dbContext)
         {
             _dbContext = dbContext;
+        }
+
+        public async Task<string> GetFirtImg(int productId)
+        {
+            var data = await _dbContext.Set<Product_Images>()
+                                       .Where(x => x.ProductID == productId)
+                                       .FirstOrDefaultAsync();
+            if (data == null)
+            {
+                return null;
+            }
+
+            return data.ImgUri;
         }
     }
 }

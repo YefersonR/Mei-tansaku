@@ -53,15 +53,15 @@ namespace MeiTansaku.WebApi.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
-        [HttpGet("products/{id}")]
+        [HttpGet("products")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Get(int ID, [FromQuery]int page = 1,[FromQuery]int pageSize = 20)
+        public async Task<IActionResult> Get(int ID, [FromQuery] List<int> Values, [FromQuery] int page = 1, [FromQuery] int pageSize = 20)
         {
             try
             {
-                var categoryResponse = await Mediator.Send(new GetCategoryWithProductsQuery() { ID = ID, Page = page, PageSize = pageSize });
+                var categoryResponse = await Mediator.Send(new GetCategoryWithProductsQuery() { ID = ID, Page = page, PageSize = pageSize, Values = Values });
                 if (categoryResponse is null)
                 {
                     return NotFound();

@@ -17,7 +17,7 @@ namespace MeiTansaku.WebApi.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
 
-        [HttpPost("GetAllList")]
+        [HttpGet("GetAllList")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -108,7 +108,7 @@ namespace MeiTansaku.WebApi.Controllers
             }
         }
 
-        [HttpPost("GetList")]
+        [HttpGet("GetList")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]

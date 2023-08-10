@@ -13,6 +13,7 @@ namespace Infrastructure.Persistence.Specifications
             base(category=> category.ID == id)
         {
             AddInclude(categoty => categoty.Products);
+            AddInclude(x => x.Attribute_Categories);
         }
     }
 }

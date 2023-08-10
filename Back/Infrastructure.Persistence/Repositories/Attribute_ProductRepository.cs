@@ -21,6 +21,15 @@ namespace Infrastructure.Persistence.Repositories
             _dbContext = dbContext;
         }
 
+//        public async Task<List<Attribute_Product>> GetByCategoryID(int Id)
+//        {
+ //           List<Attribute_Product> response = new();
+//
+//            response = await _dbContext.Set<Attribute_Product>().Where(x => x.ID == Id).ToListAsync();
+
+//            return response;
+ //       }
+
         public async Task<bool> GetRelations(int valor, int ProductId)
         {
             var product = await _dbContext.Set<Attribute_Product>()

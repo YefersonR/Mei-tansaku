@@ -12,5 +12,6 @@ namespace Core.Application.Dtos
         public int ProductsQuantity { get; set; }
 
         public List<PreviewProductItemDTO> PreviewProductItem { get; set; }
+        public List<SearchAttribute_CategoryDTO> Attribute_Categories { get; set; }
     }
 }
