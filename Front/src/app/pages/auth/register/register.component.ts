@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -8,57 +9,39 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  public registerForm : FormGroup;
-  type_accounts:string[] = ['personal','empresarial']
-  selected_account :string;
-  constructor(private formBuilder:FormBuilder) { }
+  signupObj = {
+    name: '',
+    lastName: '',
+    email: '',
+    userName: '',
+    password: '',
+    confirmPassword: '',
+    phone: ''
+  };
+
+  type_accounts: string[] = ['personal', 'empresarial'];
+  selected_account: string;
+
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.selected_account = this.type_accounts[0];
-    this.selectForm()
-  }
-  selectForm():any{
-    if(this.selected_account == this.type_accounts[0]){
-      this.registerForm = this.formBuilder.group({
-        name:['',
-        [
-          Validators.required
-        ]],
-        lastName:['',
-        [
-          Validators.required
-        ]],
-        email:['',[
-          Validators.required,
-          Validators.email
-        ]],
-        password:['',[
-          Validators.required
-        ]]
-      })
-    }
-    else if(this.selected_account == this.type_accounts[1]){
-      this.registerForm = this.formBuilder.group({
-        sellerName:['',
-        [
-          Validators.required
-        ]],
-        sellerEmail:['',
-        [
-          Validators.required,
-          Validators.email
-        ]],
-        sellerPassword:['',[
-          Validators.required
-        ]],
-        // country:['',[
-        //   Validators.required
-        // ]]
-      })
-    }
-  }
-  register():any{
-    console.log(this.registerForm)
   }
 
+  onRegister(): void {
+    console.log(this.signupObj);
+    this.userService.onRegister(this.signupObj).subscribe(
+      (res: any) => {
+        console.log('Registro exitoso', res);
+        localStorage.setItem('jwToken', res.token);
+      },
+      (error: any) => {
+        console.error('Error en el registro', error);
+        console.log('Detalles del error de validación:', error.error.errors);
+      }
+    );
+  }
 }
+
+// ferr
+// ferwis12345

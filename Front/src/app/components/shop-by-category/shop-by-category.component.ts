@@ -4,55 +4,29 @@ import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 
-
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  selector: 'app-shop-by-category',
+  templateUrl: './shop-by-category.component.html',
+  styleUrls: ['./shop-by-category.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class ShopByCategoryComponent implements OnInit {
 
-  isOpening = false;
-  isOpen = false;
   categories: any[] = [];
+  displayedCategories: any[] = [];
+
   isDropdownOpen = false;
-  isSidebarOpen = false;
-
-
-
-  openDropdown() {
-    this.isOpen = !this.isOpen;
-  }
-
-  openDropdownn() {
-    this.isOpening = !this.isOpening;
-  }
-  
-
-  toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
-  }
-
 
   constructor(private categoryService: CategoryService, private router: Router) { }
-  
 
   ngOnInit(): void {
     this.fetchCategories();
-    
   }
   
 
   fetchCategories() {
     this.categoryService.getCategories().subscribe(categories => {
-      this.categories = categories;
+      this.categories = categories.slice(0, 9);
       console.log('Llamada a la API exitosa. Categorías obtenidas:', this.categories);
     })
   }
-
-  toggleSidebar() {
-    this.isSidebarOpen = !this.isSidebarOpen;
-  }
-  
-  
 }

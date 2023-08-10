@@ -5,10 +5,14 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { CategoryComponent } from './components/category/category.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { AllcategoryComponent } from './components/allcategory/allcategory.component';
+import { ShoppingCartContentComponent } from './components/shopping-cart-content/shopping-cart-content.component';
 import { ServicioAlClienteComponent } from './components/servicioalcliente/servicioalcliente.component';
 import { PaginaCategoriaComponent } from './components/paginacategoria/paginacategoria.component';
 import { ListadeseosComponent } from './components/listadeseos/listadeseos.component';
 import { CarritodentroComponent } from './components/carritodentro/carritodentro.component';
+import { ProductPageComponent } from './components/product-page/product-page.component';
 
 const routes: Routes = [
   {
@@ -40,6 +44,12 @@ const routes: Routes = [
     ],
     pathMatch:'full'
   },
+
+    {path: 'navbar', component: NavbarComponent},
+    {path: 'allcategory', component: AllcategoryComponent},
+    {path: 'category.name', component: AllcategoryComponent},
+    {path: 'product-page', component: ProductPageComponent},
+
   {
     path:'categoria',
     component:PaginaCategoriaComponent

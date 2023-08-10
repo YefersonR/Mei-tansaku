@@ -1,86 +1,61 @@
-<div class="bg-slate-400 mx-auto mt-16 2xl:mx-auto 2xl:container py-12 px-4 sm:px-6 xl:px-20 2xl:px-0 w-full">
-    <div class="ml-0">
-        <div class="flex">
-            <div class="ml-1 w-36">
-                <h1 class="text-2xl font-extrabold tracking-tight text-gray-900 mx-3">
-                    All Categories
-                </h1>
-                <ul>
-                    <li class="" *ngFor="let category of categories">{{ category.name }}</li>
-                    <li><a href=""></a></li>
+A<app-navbar></app-navbar>
+<!-- allcategory.component.html -->
+<div class="bg-white mx-auto mt-16 2xl:mx-auto 2xl:container py-12 px-4 sm:px-6 xl:px-20 2xl:px-0 w-full">
+    <div class="flex flex-col lg:flex-row"> <!-- Cambiamos a flex-col en pantallas pequeñas y flex-row en pantallas grandes -->
+        <!-- Side Bar with Categories -->
+        <div class="w-40 pr-4">
+            <div class="sticky top-32 w-56">
+                <h1 class="text-2xl font-bold text-black mb-4">All Categories</h1>
+                <ul class="leading-tight">
+                    <li class="mb-4 no-underline hover:underline" *ngFor="let category of categories">
+                        <!-- Agregar el evento (click) para activar el desplazamiento suave -->
+                        <a (click)="scrollToAnchor(category.name)">{{ category.name }}</a>
+                    </li>
                 </ul>
             </div>
-            <div>
+        </div>
 
-                <div class="">
-                    <!-- Hero section -->
-                    <header class="bg-white">
-                        <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-                            <p class="mt-4 max-w-xl text-base text-gray-500">
-                                Find great deals on millions of items, from everyday essentials to
-                                unique finds.
-                            </p>
-                            <div class="mt-6">
-                                <a href="#" class="text-base font-medium text-blue-600 hover:text-blue-500">Start
-                                    Shopping</a>
-                            </div>
-                        </div>
-                    </header>
-
-                    <!-- Main content -->
-                    <main>
-                        <!-- Categories section -->
-                        <section class="bg-white">
-                            <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-                                <h2 class="text-2xl font-extrabold text-gray-900">Popular Categories</h2>
-                                <div class="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                                    <!-- Category cards -->
-                                    <div
-                                        class="bg-white border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-                                        <div class="aspect-w-3 aspect-h-2 bg-gray-100">
-                                            <img class="object-cover object-center" src="electronics.jpg" alt="Electronics">
-                                        </div>
-                                        <div class="p-4">
-                                            <h3 class="text-lg font-medium text-gray-900">Electronics</h3>
-                                            <p class="mt-2 text-sm text-gray-500">Shop now</p>
-                                        </div>
-                                    </div>
-                                    <!-- More category cards... -->
-                                </div>
-                            </div>
-                        </section>
-
-                        <!-- Featured deals section -->
-                        <section class="bg-gray-200">
-                            <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-                                <!-- Rest of the code for the featured deals section... -->
-                            </div>
-                        </section>
-
-                        <!-- Additional content section -->
-                        <section class="bg-white">
-                            <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-                                <h2 class="text-2xl font-extrabold text-gray-900">New Arrivals</h2>
-                                <div class="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                                    <!-- New arrival cards -->
-                                    <div
-                                        class="bg-white border border-gray-200 rounded-lg shadow-sm divide-y divide-gray-200">
-                                        <div class="aspect-w-3 aspect-h-2 bg-gray-100">
-                                            <img class="object-cover object-center" src="new-arrivals.jpg"
-                                                alt="New Arrivals">
-                                        </div>
-                                        <div class="p-4">
-                                            <h3 class="text-lg font-medium text-gray-900">New Arrivals</h3>
-                                            <p class="mt-2 text-sm text-gray-500">Check out the latest products</p>
-                                        </div>
-                                    </div>
-                                    <!-- More new arrival cards... -->
-                                </div>
-                            </div>
-                        </section>
-                    </main>
+        <div class="ml-40 flex-1"> <!-- Agregamos la clase flex-1 para que ocupe el espacio restante -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4"> <!-- Definimos las columnas responsivas -->
+                <div class="mr-10" *ngFor="let category of categories">
+                    <h1 class="text-xl font-bold text-black mb-4 mr-8" [id]="category.name">{{ category.name }}</h1>
+                    <div class="bg-amber-100 flex justify-center items-center">
+                        <img class="w-28" src="" alt="category.urlImage">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<app-footer></app-footer>
+
+
+
+            <!-- <div>
+                <h2 class="text-2xl font-bold h-10" id="MeiTansaku-Motors">Piezas de Automóvil Y Accesorios</h2>
+                <div class="grid grid-cols-3 gap-4">
+
+                    <div>
+                        <div class="bg-amber-100">
+                            <img class="ml-7 w-28 flex justify-center" src="https://i.ebayimg.com/images/g/tWIAAOSwjPJc~-7f/s-l225.png" alt="">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bg-amber-100">
+                            <img class="ml-8 w-28 flex justify-center" src="https://i.ebayimg.com/images/g/jncAAOSwSXRc~-57/s-l225.png" alt="">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bg-amber-100">
+                            <img class="ml-8 w-28 flex justify-center" src="https://i.ebayimg.com/images/g/PzwAAOSwdiFc~-7E/s-l225.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                
+                <div *ngFor="let product of products[2]">
+                <!-- Muestra los detalles del producto
+                <p>{{ product.name}}</p>
+                Agrega aquí más detalles del producto si es necesario
+                </div>
+            </div> -->

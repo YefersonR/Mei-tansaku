@@ -1,0 +1,25 @@
+.carousel-container {
+    max-width: 100%;
+  }
+  
+  .carousel-track {
+    display: flex;
+    transition: transform 0.3s ease;
+  }
+  
+  .carousel-slide {
+    flex: 0 0 100%;
+  }
+  
+  /* Opcional: Ajusta el tamaño de las diapositivas según tus necesidades */
+  .carousel-slide img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+  
+  .carousel-controls {
+    display: flex;
+    justify-content: center;
+  }
+  

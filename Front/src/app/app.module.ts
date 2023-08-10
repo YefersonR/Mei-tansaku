@@ -21,6 +21,11 @@ import { PaginaCategoriaComponent } from './components/paginacategoria/paginacat
 import { AllcategoryComponent } from './components/allcategory/allcategory.component';
 import { ListadeseosComponent } from './components/listadeseos/listadeseos.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { ProductComponent } from './components/product/product.component';
+import { ShopByCategoryComponent } from './components/shop-by-category/shop-by-category.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { ProductPageComponent } from './components/product-page/product-page.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -42,6 +47,11 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     PaginaCategoriaComponent,
     ListadeseosComponent,
     PaginationComponent,
+    ProductComponent,
+    ShopByCategoryComponent,
+    CarouselComponent,
+    ProductPageComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
