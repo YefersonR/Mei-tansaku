@@ -42,7 +42,6 @@ const routes: Routes = [
     pathMatch:'full'
   },
 
-    {path: 'navbar', component: NavbarComponent},
     {path: 'allcategory', component: AllcategoryComponent},
     {path: 'category.name', component: AllcategoryComponent},
     {path: 'product-page', component: ProductPageComponent},
