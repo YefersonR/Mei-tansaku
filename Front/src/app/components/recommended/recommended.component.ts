@@ -14,7 +14,7 @@ export class RecommendedComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryService.getCategories().subscribe(data => {
-      this.categories = data.slice(0, 7);
+      this.categories = data.slice(0,7);
     });
   }
 }

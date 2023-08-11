@@ -5,7 +5,6 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { CategoryComponent } from './components/category/category.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { AllcategoryComponent } from './components/allcategory/allcategory.component';
 import { ServicioAlClienteComponent } from './components/servicioalcliente/servicioalcliente.component';
 import { PaginaCategoriaComponent } from './components/paginacategoria/paginacategoria.component';
@@ -47,10 +46,9 @@ const routes: Routes = [
     pathMatch:'full'
   },
 
-    {path: 'navbar', component: NavbarComponent},
     {path: 'allcategory', component: AllcategoryComponent},
     {path: 'category.name', component: AllcategoryComponent},
-    {path: 'product-page', component: ProductPageComponent},
+    {path: 'product-page/:id', component: ProductPageComponent},
 
   {
     path:'categoria/:id',

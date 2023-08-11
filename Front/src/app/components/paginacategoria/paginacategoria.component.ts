@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Params } from '@angular/router';
+import { productCart } from 'src/app/interfaces/productCart.interface';
+import { CartService } from './../../services/cart.service';
 
 interface Producto {
   id: number;
@@ -26,7 +28,7 @@ export class PaginaCategoriaComponent implements OnInit {
   pageSize: number = 115; // Tamaño de cada página
   // totalPages: number = 1; // Número total de páginas
   categoryId: number; // ID de la categoría (ajusta el valor según tu API)
-
+  nameCategory:string;
   //////////////////////////////////////////////////////////////////////////////////////////
   items: any[] = [];
   itemsPerPage = 20;
@@ -51,10 +53,13 @@ export class PaginaCategoriaComponent implements OnInit {
   }
   //////////////////////////////////////////////////////////////////////////////////////////
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {}
+  constructor(private http: HttpClient,private cartService:CartService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-
+    this.route.params.subscribe((params: Params) => {
+      this.categoryId = params['id'];
+    });
+    this.obtenerProductos()
   }
 
   obtenerProductos() {
@@ -63,8 +68,8 @@ export class PaginaCategoriaComponent implements OnInit {
     this.http.get<any>(apiUrl).subscribe(
       (data) => {
         this.productos = data.previewProductItem;
-        //this.totalPages = data.totalPages;
-        this.filtrarProductos(); // Aplicar filtros después de obtener los productos
+        this.nameCategory = data.nameCategory
+        this.filtrarProductos();
       },
       (error) => {
         console.error('Error al obtener los productos', error);
@@ -105,7 +110,7 @@ export class PaginaCategoriaComponent implements OnInit {
 
   cambiarOrdenAlfabetico() {
     this.ordenAlfabetico = this.ordenAlfabetico === 'asc' ? 'desc' : 'asc';
-    this.currentPage = 1; // Reiniciamos a la primera página al cambiar el orden
+    this.currentPage = 1;
     this.obtenerProductos();
   }
 
@@ -124,5 +129,17 @@ export class PaginaCategoriaComponent implements OnInit {
     const startIndex = (this.currentPage - 1) * this.pageSize;
     const endIndex = startIndex + this.pageSize;
     return this.productosFiltrados.slice(startIndex, endIndex);
+  }
+  addToCart(product:Producto){
+    const productToCart: productCart = {
+      id: product.id,
+      name: product.name,
+      imagenUrl: product.imageUrl!,
+      description: product.description,
+      price: product.price,
+      rating: product.rating,
+      quantity: 1
+    };
+    this.cartService.addProductToCart(productToCart)
   }
 }

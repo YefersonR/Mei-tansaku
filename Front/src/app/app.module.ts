@@ -13,7 +13,6 @@ import { RegisterComponent } from './pages/auth/register/register.component';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { LoadingComponent } from './components/loading/loading.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { CarritodentroComponent } from './components/carritodentro/carritodentro.component';
 import { ServicioAlClienteComponent } from './components/servicioalcliente/servicioalcliente.component';
 import { ShoppingCartContentComponent } from './components/shopping-cart-content/shopping-cart-content.component';
@@ -44,7 +43,6 @@ import { AggProductoComponent } from './components/aggproducto/aggproducto.compo
     RegisterComponent,
     LoadingComponent,
     FooterComponent,
-    HeroDetailComponent,
     CarritodentroComponent,
     ServicioAlClienteComponent,
     PaginaCategoriaComponent,

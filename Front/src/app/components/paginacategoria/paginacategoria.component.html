@@ -1,4 +1,5 @@
-<div class="flex">
+<app-navbar></app-navbar>
+<div class="flex mt-28">
   <!-- Filtro de precio -->
   <div class="w-1/4 p-4">
     <h2 class="text-xl font-bold mb-4">Filtrar por precio:</h2>
@@ -34,11 +35,12 @@
 
   <!-- Listado de productos -->
   <div class="w-3/4 p-4">
-    <h1 class="text-3xl font-bold mb-6">Categoria</h1>
+    <h1 class="text-3xl font-bold mb-6">{{nameCategory}}</h1>
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
 
       <div *ngFor="let producto of paginatedItems"
-        class="p-4 border rounded-lg shadow-md">
+        class="p-4 border rounded-lg shadow-md" >
+        <a [routerLink]="['/product-page', producto.id]">
 
         <img [src]="producto.imageUrl" class="w-full h-48 object-cover mb-4 rounded">
         <p class="text-gray-600">{{ producto.description }}</p>
@@ -49,9 +51,10 @@
           <span class="mr-1 text-yellow-500">&#9733;</span>
           <span class="text-sm text-gray-600">{{ producto.rating }}</span>
         </div>
+      </a>
 
-        <button class="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
-          Comprar ahora
+        <button class="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" (click)="addToCart(producto)">
+          Agregar al carritos
         </button>
       </div>
     </div>
