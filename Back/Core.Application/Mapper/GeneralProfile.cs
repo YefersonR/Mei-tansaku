@@ -4,6 +4,7 @@ using Core.Application.DTOS.Account;
 using Core.Application.Feactures.Comments.Commands.CreateComments;
 using Core.Application.Feactures.List.Commands.CreateList;
 using Core.Application.Feactures.Products.Commands.CreateProduct;
+using Core.Application.Feactures.Rating.Commads.AddRating;
 using Core.Application.ViewModels.User;
 using Core.Domain.Entities;
 using System;
@@ -177,6 +178,9 @@ namespace Core.Application.Mapper
                ;
 
             CreateMap<Product, CreateProductCommand>()
+                .ReverseMap();
+
+            CreateMap<Product_Rating, AddRatingCommand>()
                 .ReverseMap();
         }
 
