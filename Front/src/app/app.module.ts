@@ -26,6 +26,7 @@ import { ShopByCategoryComponent } from './components/shop-by-category/shop-by-c
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { BuscadorComponent } from './components/buscador/buscador.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     CarouselComponent,
     ProductPageComponent,
     ProfileComponent,
+    BuscadorComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,47 @@
+/* buscador.component.css */
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 10px;
+  width: calc(33.33% - 20px);
+  text-align: center;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.product-name {
+  font-size: 1.2em;
+  margin: 5px 0;
+}
+
+.product-description {
+  font-size: 0.9em;
+  color: #555;
+}
+
+.product-price {
+  font-size: 1.1em;
+  color: #e44d26;
+}
+
+.add-to-cart-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-to-cart-button:hover {
+  background-color: #2980b9;
+}
