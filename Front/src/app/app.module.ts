@@ -28,6 +28,7 @@ import { ProductPageComponent } from './components/product-page/product-page.com
 import { ProfileComponent } from './components/profile/profile.component';
 import { BuscadorComponent } from './components/buscador/buscador.component';
 import { RecommendedComponent } from './components/recommended/recommended.component';
+import { AggProductoComponent } from './components/aggproducto/aggproducto.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { RecommendedComponent } from './components/recommended/recommended.compo
     ProfileComponent,
     BuscadorComponent,
     RecommendedComponent,
+    AggProductoComponent,
   ],
   imports: [
     BrowserModule,

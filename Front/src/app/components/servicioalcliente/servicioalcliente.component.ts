@@ -100,6 +100,7 @@ export class ServicioAlClienteComponent {
       pattern: /información sobre impuestos/i,
       answer: 'La información sobre impuestos varía según la ubicación y las regulaciones fiscales locales. Durante el proceso de pago, se te mostrará cualquier impuesto aplicable antes de confirmar tu pedido.'
     },
+
   ];
 
   frequentlyAskedQuestions = [
@@ -119,7 +120,7 @@ export class ServicioAlClienteComponent {
 
   sendMessage() {
     if (this.newMessage.trim() !== '') {
-      this.chatMessages.push({ sender: 'Tu', content: this.newMessage });
+      this.chatMessages.push({ sender: 'Usuario', content: this.newMessage });
       this.processMessage(this.newMessage);
       this.newMessage = '';
     }

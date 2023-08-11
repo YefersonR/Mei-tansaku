@@ -13,6 +13,7 @@ import { ListadeseosComponent } from './components/listadeseos/listadeseos.compo
 import { CarritodentroComponent } from './components/carritodentro/carritodentro.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
 import { BuscadorComponent } from './components/buscador/buscador.component';
+import { AggProductoComponent } from './components/aggproducto/aggproducto.component';
 
 
 const routes: Routes = [
@@ -62,6 +63,10 @@ const routes: Routes = [
   {
     path:'listadeseos',
     component:ListadeseosComponent
+  },
+  {
+    path:'agregarproducto',
+    component:AggProductoComponent
   },
   {
     path:'buscador',

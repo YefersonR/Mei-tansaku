@@ -1,0 +1,115 @@
+<!-- aggproducto.component.html -->
+<div class="bg-gray-100 min-h-screen">
+  <header class="bg-white py-4 shadow-md">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-semibold">Agregar Nuevo Producto</h1>
+      <a href="#" class="text-blue-500 hover:underline">Volver al Catálogo</a>
+    </div>
+  </header>
+  <div class="container mx-auto px-4 py-8 flex justify-center">
+    <div class="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
+      <form (ngSubmit)="agregarProducto()">
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">Nombre del Producto:</label>
+          <input class="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
+                 [(ngModel)]="producto.nombre" name="nombreProducto" placeholder="Ejemplo: Smartphone">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">Precio:</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3">$</span>
+            <input class="w-full pl-10 pr-4 py-2 border rounded focus:outline-none focus:border-blue-500"
+                   [(ngModel)]="producto.precio" name="precio" type="number" step="0.01" placeholder="0.00">
+          </div>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">Tamaño del Producto:</label>
+          <input class="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
+                 [(ngModel)]="producto.tamano" name="tamanoProducto" placeholder="Ejemplo: 5.5 pulgadas">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">Stock:</label>
+          <input class="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
+                 [(ngModel)]="producto.stock" name="stock" type="number" placeholder="0">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">Categoría:</label>
+          <select class="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
+                  [(ngModel)]="producto.categoria" name="categoria">
+            <option value="electronicos">Electrónicos</option>
+            <option value="ropa">Ropa</option>
+            <option value="alimentos">Alimentos</option>
+            <option value="deportes">Deportes</option>
+            <option value="juguetes">Juguetes</option>
+            <option value="libros">Libros</option>
+            <option value="musica">Música</option>
+            <option value="belleza">Belleza</option>
+            <option value="vehiculos">Vehículos</option>
+            <option value="muebles">Muebles</option>
+            <option value="electronica">Electrónica</option>
+            <option value="artesanias">Artesanías</option>
+            <option value="jardineria">Jardinería</option>
+            <option value="salud">Salud</option>
+            <option value="tecnologia">Tecnología</option>
+            <option value="viajes">Viajes</option>
+            <!-- Agrega más opciones de categoría aquí -->
+          </select>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">Imagen del Producto:</label>
+          <input type="file" accept="image/*" (change)="cargarImagen($event)" class="border rounded">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">Descripción del Producto:</label>
+          <textarea class="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
+                    [(ngModel)]="producto.descripcion" name="descripcionProducto" rows="4" placeholder="Escribe una descripción del producto"></textarea>
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 text-sm font-bold mb-2">Dirección del Producto:</label>
+          <input class="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
+                 [(ngModel)]="producto.direccion" name="direccionProducto" placeholder="Ejemplo: Calle Principal, Ciudad">
+        </div>
+        <div class="flex justify-between mt-4">
+          <button class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600" type="button" (click)="limpiarCampos()">Limpiar Campos</button>
+          <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600" type="submit">Agregar Producto</button>
+        </div>
+      </form>
+    </div>
+    <div class="w-1/2 p-6">
+      <div class="border rounded-lg p-4 shadow-md">
+        <h3 class="text-lg font-semibold mb-3">Vista Previa de la Publicación</h3>
+        <div class="mb-2">
+          <img *ngIf="producto.imagen" [src]="producto.imagen" alt="Imagen del producto" class="w-64 h-64 rounded-lg mx-auto">
+        </div>
+        <div class="mb-2">
+          <p class="text-gray-700 text-sm font-semibold">Nombre:</p>
+          <p class="text-gray-800">{{ producto.nombre }}</p>
+        </div>
+        <div class="mb-2">
+          <p class="text-gray-700 text-sm font-semibold">Precio:</p>
+          <p class="text-gray-800">$ {{ producto.precio }}</p>
+        </div>
+        <div class="mb-2">
+          <p class="text-gray-700 text-sm font-semibold">Tamaño:</p>
+          <p class="text-gray-800">{{ producto.tamano }}</p>
+        </div>
+        <div class="mb-2">
+          <p class="text-gray-700 text-sm font-semibold">Stock:</p>
+          <p class="text-gray-800">{{ producto.stock }}</p>
+        </div>
+        <div class="mb-2">
+          <p class="text-gray-700 text-sm font-semibold">Categoría:</p>
+          <p class="text-gray-800">{{ producto.categoria }}</p>
+        </div>
+        <div class="mb-2">
+          <p class="text-gray-700 text-sm font-semibold">Descripción:</p>
+          <p class="text-gray-800">{{ producto.descripcion }}</p>
+        </div>
+        <div class="mb-2">
+          <p class="text-gray-700 text-sm font-semibold">Dirección:</p>
+          <p class="text-gray-800">{{ producto.direccion }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
