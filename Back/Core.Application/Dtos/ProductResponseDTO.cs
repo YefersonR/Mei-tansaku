@@ -22,6 +22,8 @@ namespace Core.Application.Dtos
         //public string ImageUrl { get; set; }
         public List<CommentsDTO> Comments { get; set; }
         public List<string> Product_Images { get; set; }
+        public SearchPreviewCategoryDTO Category { get; set; }
+
 
     }
 }

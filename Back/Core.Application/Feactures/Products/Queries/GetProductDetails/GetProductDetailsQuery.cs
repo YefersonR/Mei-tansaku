@@ -21,13 +21,15 @@ namespace Core.Application.Feactures.Products.Queries.GetProductById
         private readonly IMapper _mapper;
         private readonly IProduct_ImagesRepository _product_ImagesRepository;
         private readonly IProduct_RatingRepository _product_RatingRepository;
+        private readonly IAttribute_CategoryRepository _attribute_CategoryRepository;
 
-        public GetProductByIdQueryHandler(IProductRepository productRepository, IMapper mapper, IProduct_ImagesRepository product_ImagesRepository, IProduct_RatingRepository product_RatingRepository)
+        public GetProductByIdQueryHandler(IProductRepository productRepository, IMapper mapper, IProduct_ImagesRepository product_ImagesRepository, IProduct_RatingRepository product_RatingRepository, IAttribute_CategoryRepository attribute_CategoryRepository)
         {
             _productRepository = productRepository;
             _mapper = mapper;
             _product_ImagesRepository = product_ImagesRepository;
             _product_RatingRepository = product_RatingRepository;
+            _attribute_CategoryRepository = attribute_CategoryRepository;
         }
 
         public async Task<ProductResponseDTO> Handle(GetProductDetailsQuery request, CancellationToken cancellationToken)
@@ -36,6 +38,7 @@ namespace Core.Application.Feactures.Products.Queries.GetProductById
             var productDetailDTO = _mapper.Map<ProductResponseDTO>(productDetail);
             productDetailDTO.Product_Images = await _product_ImagesRepository.GetImgByProductID(productDetailDTO.ID);
             productDetailDTO.TotalRating = await _product_RatingRepository.Rating(request.ID);
+            productDetailDTO.Category.Attribute_Categories = _mapper.Map<List<SearchAttribute_CategoryDTO>>(await _attribute_CategoryRepository.GetAttribute(productDetailDTO.Category.ID, productDetailDTO.ID));
             return productDetailDTO;
         }
     }

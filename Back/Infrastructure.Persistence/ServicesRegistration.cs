@@ -34,6 +34,7 @@ namespace Infrastructure.Persistence
             services.AddTransient<IProduct_ListRepository, Product_ListRepository>();
             services.AddTransient<IProduct_ImagesRepository, Product_ImagesRepository>();
             services.AddTransient<IProduct_RatingRepository, Product_RatingRepository>();
+            services.AddTransient<IAttribute_CategoryRepository, Attribute_CategoryRepository>();
         }
 
     }
