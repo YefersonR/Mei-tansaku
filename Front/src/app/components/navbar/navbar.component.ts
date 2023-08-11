@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
   openDropdownn() {
     this.isOpening = !this.isOpening;
   }
-  
+
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
@@ -35,24 +35,23 @@ export class NavbarComponent implements OnInit {
 
 
   constructor(private categoryService: CategoryService, private router: Router) { }
-  
+
 
   ngOnInit(): void {
     this.fetchCategories();
-    
+
   }
-  
+
 
   fetchCategories() {
     this.categoryService.getCategories().subscribe(categories => {
       this.categories = categories;
-      console.log('Llamada a la API exitosa. Categorías obtenidas:', this.categories);
     })
   }
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
-  
-  
+
+
 }

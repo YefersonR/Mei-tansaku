@@ -21,12 +21,11 @@ export class ShopByCategoryComponent implements OnInit {
   ngOnInit(): void {
     this.fetchCategories();
   }
-  
+
 
   fetchCategories() {
     this.categoryService.getCategories().subscribe(categories => {
-      this.categories = categories.slice(0, 9);
-      console.log('Llamada a la API exitosa. Categorías obtenidas:', this.categories);
+      this.categories = categories.slice(8, 20);
     })
   }
 }

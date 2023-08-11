@@ -7,7 +7,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
-  
-  constructor(private http: HttpClient) { }
 
+  constructor(private http: HttpClient) { }
+  private urlApi = 'http://meitensaku-001-site1.gtempurl.com/api/Product';
+
+
+  getProduct(id:number):Observable<any>{
+    return this.http.get(`${this.urlApi}/${id}`);
+  }
 }

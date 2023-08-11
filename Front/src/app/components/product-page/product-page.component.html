@@ -1,11 +1,12 @@
-<section class="py-12 sm:py-16">
+<app-navbar></app-navbar>
+<section class="py-12 sm:py-16 mt-5">
     <div class="container mx-auto px-4">
         <div class="lg:col-gap-12 xl:col-gap-16 mt-8 grid grid-cols-1 gap-12 lg:mt-12 lg:grid-cols-5 lg:gap-16">
             <div class="lg:col-span-3 lg:row-end-1">
                 <div class="lg:flex lg:items-start">
                     <div class="lg:order-2 lg:ml-5">
                         <div class="max-w-xl overflow-hidden rounded-lg">
-                            <img class="h-full w-full max-w-full object-cover" src="https://i.ebayimg.com/images/g/0MgAAOSw765fyPd7/s-l1600.jpg"
+                            <img class="h-11/12s w-11/12 max-w-full object-cover" src="https://i.ebayimg.com/images/g/0MgAAOSw765fyPd7/s-l1600.jpg"
                                 alt="" />
                         </div>
                     </div>
@@ -32,8 +33,8 @@
                 </div>
             </div>
 
-            <div class="lg:col-span-2 lg:row-span-2 lg:row-end-2">
-                <h1 class="sm: text-2xl font-bold text-gray-900 sm:text-3xl">Reloj Casio</h1>
+            <div class="lg:col-span-3 lg:row-span-3 lg:row-end-3">
+                <h1 class="sm: text-2xl font-bold text-gray-900 sm:text-3xl">{{productDetails.name}}</h1>
 
                 <div class="mt-5 flex items-center">
                     <div class="flex items-center">
@@ -119,39 +120,53 @@
                 </div>
 
                 <div
-                    class="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
+                    class="mt-10 ml-5 w0 flex items-center space-y-6 border-t border-b py-4 sm:flex-row sm:space-y-0">
                     <div class="flex items-end">
-                        <h1 class="text-3xl font-bold">$60.50</h1>
+                        <h1 class="text-3xl font-bold">${{productDetails.price}}</h1>
                         <span class="text-base">/100.99 RD</span>
                     </div>
 
-                        <button type="button"
-                            class="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-2 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="shrink-0 mr-3 h-5 w-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                            </svg>
-                            Add to cart
-                        </button>
+                      <div class="">
+                        <div class="flex flex-wrap items-center justify-center">
+                            <div class="w-5/12 p-1">
+                              <button type="button" (click)="addToCart()"
+                              class="flex items-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-2 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800">
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="shrink-0 mr-3 h-5 w-5">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                              </svg>
+                                Agregar al carrito
+                              </button>
 
-                        <button type="button"
-                        class="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-5 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 mr-3 h-5 w-5" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                        </svg>
-                        Buy now
-                    </button>
-                    
-                    <button type="button"
-                    class="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-5 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 mr-3 h-5 w-5" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                    </svg>
-                    Buy now
-                </button>
+                          </div>
+                          <div class="w-5/12 p-1">
+                              <button type="button"
+                              class="rounded-md flex items-center border-2 border-transparent bg-gray-900 bg-none px-5 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 mr-3 h-5 w-5" fill="none"
+                                  viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                  <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                              </svg>
+                              Comprar ahora
+                              </button>
+                          </div>
+                          <div class="w-full p-4">
+                            <button type="button"
+                            class="w-full flex items-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-5 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800 ">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                          </svg>
+                              Agregar a lista de deseos
+                            </button>
+                          </div>
+                        </div>
+
+
+
+
+                </div>
+
                 </div>
 
                 <ul class="mt-8 space-y-2">
@@ -195,14 +210,46 @@
                 </div>
 
                 <div class="mt-8 flow-root sm:mt-12">
-                    <h1 class="text-3xl font-bold">Delivered To Your Door</h1>
-                    <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia accusantium nesciunt
-                        fuga.</p>
-                    <h1 class="mt-8 text-3xl font-bold">From the Fine Farms of Brazil</h1>
-                    <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio numquam enim facere.
+
+
+                  <h1 class="text-3xl font-bold">Características del artículo</h1>
+                  <div class="w-1/3 flex justify-between items-center my-10 mx-2">
+
+                    <p class="mt-4">Disponibilidad
                     </p>
-                    <p class="mt-4">Amet consectetur adipisicing elit. Optio numquam enim facere. Lorem ipsum dolor sit
-                        amet consectetur, adipisicing elit. Dolore rerum nostrum eius facere, ad neque.</p>
+                    <p class="mt-4">{{productDetails.availability}}
+                    </p>
+
+                  </div>
+
+                  <div class="w-1/3 flex justify-between items-center my-10 mx-2">
+                    <p class="mt-4">
+                    En almacenes
+                    </p>
+                    <p class="mt-4">{{productDetails.stock}}
+                    </p>
+                  </div>
+                  <div class="w-1/3 flex justify-between items-center my-10 mx-2">
+                    <p class="mt-4">
+                      Peso
+                    </p>
+                    <p class="mt-4">{{productDetails.weight}}
+                    </p>
+                  </div>
+
+                  <div class="w-1/3 flex justify-between items-center my-10 mx-2">
+                    <p class="mt-4">
+                      Direccion de entrega
+                    </p>
+                    <p class="mt-4">{{productDetails.address}}
+                    </p>
+                  </div>
+
+                  <h1 class="mb-2 text-3xl font-bold">Descripción del artículo por parte del
+                  vendedor
+                  </h1>
+                  <p class="mt-4">{{productDetails.description}}
+                  </p>
                 </div>
             </div>
         </div>

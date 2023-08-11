@@ -57,13 +57,12 @@ export class PaginaCategoriaComponent implements OnInit {
   }
 
   obtenerProductos() {
-    const apiUrl = `http://meitensaku-001-site1.gtempurl.com/api/category/products/${this.categoryId}?page=${this.currentPage}&pageSize=${this.pageSize}`;
-
+    const apiUrl = `http://meitensaku-001-site1.gtempurl.com/api/Category/products?iD=${this.categoryId}&page=${this.currentPage}&pageSize=${this.pageSize}`;
     this.http.get<any>(apiUrl).subscribe(
       (data) => {
         this.productos = data.previewProductItem;
         //this.totalPages = data.totalPages;
-        this.filtrarProductos(); // Aplicar filtros después de obtener los productos
+        this.filtrarProductos();
       },
       (error) => {
         console.error('Error al obtener los productos', error);
@@ -104,7 +103,7 @@ export class PaginaCategoriaComponent implements OnInit {
 
   cambiarOrdenAlfabetico() {
     this.ordenAlfabetico = this.ordenAlfabetico === 'asc' ? 'desc' : 'asc';
-    this.currentPage = 1; // Reiniciamos a la primera página al cambiar el orden
+    this.currentPage = 1;
     this.obtenerProductos();
   }
 
