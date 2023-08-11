@@ -13,22 +13,36 @@ export class ListadeseosComponent implements OnInit {
   mostrarVistaRapida: boolean = false;
   productoSeleccionado: any = null;
 
+  // Variable para almacenar la URL base de la API y el ID dinámico
+  apiBaseUrl = 'http://meitensaku-001-site1.gtempurl.com/api/ShoppingList/GetList/';
+  apiId: number = 0; // Inicializamos en 0
+
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.obtenerListaDeseos();
+    this.obtenerListaDeseos(); // Al iniciar el componente, obtenemos la lista de deseos
   }
 
   obtenerListaDeseos() {
-    const url = 'http://meitensaku-001-site1.gtempurl.com/api/ShoppingList/GetList'; // Reemplaza con la URL de tu endpoint
-    this.http.get<any[]>(url).subscribe(
-      (data) => {
-        this.listaDeseos = data;
-      },
-      (error) => {
-        console.error('Error al obtener la lista de deseos:', error);
-      }
-    );
+    // Obtenemos el ID automáticamente desde la API
+    this.http.get<number>('http://meitensaku-001-site1.gtempurl.com/api/GetDynamicId')
+      .subscribe(
+        (response) => {
+          this.apiId = response; // Actualizamos el ID de la API con el valor recibido
+          const url = `${this.apiBaseUrl}${this.apiId}`; // Construimos la URL completa
+          this.http.get<any[]>(url).subscribe(
+            (data) => {
+              this.listaDeseos = data; // Actualizamos la lista de deseos con los datos obtenidos
+            },
+            (error) => {
+              console.error('Error al obtener la lista de deseos:', error);
+            }
+          );
+        },
+        (error) => {
+          console.error('Error al obtener el ID dinámico:', error);
+        }
+      );
   }
 
   eliminarDeListaDeseos(item: any) {

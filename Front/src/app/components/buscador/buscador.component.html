@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda en Línea</title>
+  <!-- Agrega aquí tus enlaces a los estilos CSS -->
+</head>
+
+<body class="bg-gray-100">
+  <div class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-blue-800 text-white py-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="#" class="text-3xl font-bold font-heading">
+          <img src="../../../assets/meitensaku.png" alt="logo" class="w-28">
+        </a>
+
+
+       
+      </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <div class="flex-grow container mx-auto p-4">
+      <!-- Barra de búsqueda -->
+      <div class="mb-4">
+        <div class="flex">
+          <input
+            class="w-full px-4 py-2 border rounded-l shadow focus:outline-none"
+            type="text"
+            placeholder="Buscar productos..."
+            [(ngModel)]="searchTerm"
+            (keyup.enter)="searchProducts()"
+          >
+          <button
+            class="px-4 py-2 bg-blue-500 text-white rounded-r shadow"
+            (click)="searchProducts()"
+          >
+            Buscar
+          </button>
+        </div>
+      </div>
+
+      <!-- Filtro de precio -->
+      <div class="mb-4">
+        <div class="flex space-x-4">
+          <input
+            class="w-24 px-4 py-2 border rounded-l shadow focus:outline-none"
+            type="number"
+            placeholder="Min"
+            [(ngModel)]="filterMinPrice"
+          >
+          <input
+            class="w-24 px-4 py-2 border rounded-r shadow focus:outline-none"
+            type="number"
+            placeholder="Max"
+            [(ngModel)]="filterMaxPrice"
+          >
+          <button
+            class="px-4 py-2 bg-blue-500 text-white rounded shadow"
+            (click)="applyPriceFilter()"
+          >
+            Filtrar
+          </button>
+          <button
+            class="px-4 py-2 bg-gray-500 text-white rounded shadow"
+            (click)="clearPriceFilter()"
+          >
+            Limpiar
+          </button>
+        </div>
+      </div>
+
+      <!-- Mensaje si no hay resultados -->
+      <div *ngIf="searchResults.length === 0" class="text-center text-gray-600">
+        No se encontraron resultados para la búsqueda.
+      </div>
+
+      <!-- Productos -->
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div *ngFor="let product of displayedProducts" class="bg-white border rounded-lg shadow p-4">
+          <img src="{{ product.imageUrl }}" alt="{{ product.name }}" class="h-32 w-32 mx-auto mb-2">
+          <h2 class="text-lg font-semibold">{{ product.name }}</h2>
+          <p class="text-gray-600">{{ product.description }}</p>
+          <p class="text-blue-600 font-semibold">${{ product.price }}</p>
+          <button
+            class="mt-4 px-4 py-2 bg-blue-500 text-white rounded shadow hover:bg-blue-600 transition"
+            (click)="addToCart(product)"
+          >
+            <i class="fas fa-shopping-cart"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paginación -->
+    <div class="bg-blue-800 py-4 fixed bottom-0 inset-x-0">
+      <div class="container mx-auto flex justify-center">
+        <div class="flex items-center space-x-4">
+          <button
+            class="px-3 py-1 bg-blue-500 text-white rounded disabled:opacity-50 hover:bg-blue-600 transition"
+            [disabled]="currentPage === 1"
+            (click)="changePage(-1)"
+          >
+            Anterior
+          </button>
+          <p class="text-white">{{ currentPage }} / {{ totalPages }}</p>
+          <button
+            class="px-3 py-1 bg-blue-500 text-white rounded disabled:opacity-50 hover:bg-blue-600 transition"
+            [disabled]="currentPage === totalPages"
+            (click)="changePage(1)"
+          >
+            Siguiente
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

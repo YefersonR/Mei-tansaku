@@ -16,6 +16,9 @@ export class ProductService {
   getProduct(id:number):Observable<any>{
     return this.http.get(`${this.urlApi}/${id}`);
   }
+  searchProducts(searchTerm: string, currentPage: number, arg2: number) {
+    throw new Error('Method not implemented.');
+  }
 
   getCategories(): Observable<Category[]> {
     // Hacer la solicitud a la API para obtener las categorías y productos

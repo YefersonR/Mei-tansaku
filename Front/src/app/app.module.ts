@@ -25,6 +25,7 @@ import { ShopByCategoryComponent } from './components/shop-by-category/shop-by-c
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { ProductPageComponent } from './components/product-page/product-page.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { BuscadorComponent } from './components/buscador/buscador.component';
 import { RecommendedComponent } from './components/recommended/recommended.component';
 
 
@@ -51,6 +52,7 @@ import { RecommendedComponent } from './components/recommended/recommended.compo
     CarouselComponent,
     ProductPageComponent,
     ProfileComponent,
+    BuscadorComponent,
     RecommendedComponent,
   ],
   imports: [
