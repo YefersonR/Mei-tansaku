@@ -10,7 +10,7 @@ export class BuscadorComponent implements OnInit {
   searchTerm: string = '';
   searchResults: any[] = [];
   currentPage: number = 1;
-  pageSize: number = 5;
+  pageSize: number = 20;
   totalPages: number = 0;
   displayedProducts: any[] = [];
   filterMinPrice: number | null = null;
