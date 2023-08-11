@@ -28,9 +28,12 @@
               <option *ngFor="let category of categories">{{ category.name }}</option>
             </select>
 
-            <input
-              class="selected border-r-2 bg-gray-900 py-2 px-4 leading-tight focus:outline-none focus:border-gray-500 text-white"
-              type="text" placeholder="Search...">
+            <button class="flex items-center focus:outline-none bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md text-lg" (click)="irABuscador()">
+              Ir al Buscador
+            </button>
+
+
+
 
             <div class=" relative inline-block">
               <button
