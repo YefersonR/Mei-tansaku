@@ -36,10 +36,16 @@ namespace Infrastructure.Persistence.Repositories
             int response = 0;
             var data = await _dbContext.Set<Product_Rating>()
                                        .Where(x => x.ProductID == productId).ToListAsync();
-            foreach(var i in data)
+
+            if (data.Count() == 0)
+            {
+                return 0;
+            }
+            foreach (var i in data)
             {
                 response += i.Rating;
             }
+
 
             response = response / data.Count();
 

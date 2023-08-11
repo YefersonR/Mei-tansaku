@@ -1,4 +1,4 @@
-﻿using Core.Domain.Common;
+﻿    using Core.Domain.Common;
 using Core.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
