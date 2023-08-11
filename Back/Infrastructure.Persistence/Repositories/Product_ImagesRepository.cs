@@ -30,5 +30,20 @@ namespace Infrastructure.Persistence.Repositories
 
             return data.ImgUri;
         }
+
+        public async Task<List<string>> GetImgByProductID(int productId)
+        {
+            List<string> response = new();
+
+            var data = await _dbContext.Set<Product_Images>()
+                                       .Where(x => x.ProductID == productId).ToListAsync();
+            if (data == null)
+            {
+                return null;
+            }
+
+            response = data.Select(x => x.ImgUri).ToList();
+            return response;
+        }
     }
 }

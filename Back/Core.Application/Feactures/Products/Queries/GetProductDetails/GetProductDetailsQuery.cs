@@ -32,7 +32,7 @@ namespace Core.Application.Feactures.Products.Queries.GetProductById
         {
             var productDetail = await _productRepository.GetProductDetails(request.ID, request.commentsPage);
             var productDetailDTO = _mapper.Map<ProductResponseDTO>(productDetail);
-            productDetailDTO.ImageUrl = await _product_ImagesRepository.GetFirtImg(productDetailDTO.ID);
+            productDetailDTO.Product_Images = await _product_ImagesRepository.GetImgByProductID(productDetailDTO.ID);
 
             return productDetailDTO;
         }

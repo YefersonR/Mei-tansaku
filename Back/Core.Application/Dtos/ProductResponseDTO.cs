@@ -19,7 +19,7 @@ namespace Core.Application.Dtos
         public double Weight { get; set; }
         public string Address { get; set; }
         public int TotalRating { get; set; }
-        public string ImageUrl { get; set; }
+        //public string ImageUrl { get; set; }
         public List<CommentsDTO> Comments { get; set; }
         public List<string> Product_Images { get; set; }
 
