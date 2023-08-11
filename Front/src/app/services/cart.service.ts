@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { productCart } from '../interfaces/productCart.interface';
-import { products } from '../interfaces/product.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +13,8 @@ export class CartService {
   constructor() { }
 
   addProductToCart(producto: productCart){
+
+
     const index = this.carrito.findIndex(item => item.id === producto.id);
 
     if (index !== -1) {
@@ -25,6 +26,7 @@ export class CartService {
 
   }
   deleteProductToCart(producto: productCart){
+
     const index = this.carrito.findIndex(item => item.id === producto.id);
 
     if (index !== -1) {
@@ -37,5 +39,12 @@ export class CartService {
     localStorage.setItem('carrito', JSON.stringify(this.carrito));
 
   }
-
+  getCarrito(){
+    const carritoGuardado = localStorage.getItem('carrito');
+    if (carritoGuardado) {
+      this.carrito = JSON.parse(carritoGuardado);
+      console.log(this.carrito)
+    }
+    return this.carrito
+  }
 }

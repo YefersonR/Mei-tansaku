@@ -5,23 +5,24 @@
     <div class="w-3/4">
       <div class="cart-items">
         <h2 class="text-2xl font-bold">Carrito de compras</h2>
-        <div *ngFor="let item of cartItems" class="cart-item mt-4 p-4 flex items-center border-b border-gray-300">
-          <img [src]="item.image" alt="Imagen del producto" class="w-20 h-20 object-cover rounded">
+        <div *ngFor="let item of carrito" class="cart-item mt-4 p-4 flex items-center border-b border-gray-300">
+          <img [src]="item.imagenUrl" alt="Imagen del producto" class="w-20 h-20 object-cover rounded">
           <div class="item-details ml-4">
             <h3 class="text-xl font-semibold">{{ item.name }}</h3>
             <p class="text-gray-600">{{ item.description }}</p>
-            <div class="flex items-center mt-2">
-              <button (click)="decreaseQuantity(item)" class="bg-gray-200 text-gray-700 px-2 py-1 rounded-l">
-                -
-              </button>
-              <span class="border border-gray-300 px-4 py-1">{{ item.quantity }}</span>
-              <button (click)="increaseQuantity(item)" class="bg-gray-200 text-gray-700 px-2 py-1 rounded-r">
-                +
-              </button>
+            <div class="flex justify-start items-center mt-2">
+              <div class="flex w-9 h-8 items-stretch text-gray-600">
+                <button class="flex items-center rounded-l-md bg-gray-200 px-4 transition hover:bg-black hover:text-white" (click)="deleteProductToCart(item)">-</button>
+                <div class="flex w-full items-center bg-gray-100 px-4 text-xs uppercase transition">
+                  {{item.quantity}}
+                </div>
+                <button class="flex items-center  rounded-r-md bg-gray-200 px-4 transition hover:bg-black hover:text-white" (click)="addProductToCart(item)" >+</button>
+              </div>
             </div>
             <p class="text-gray-600">Precio: ${{ item.price }}</p>
-            <p class="text-gray-600">Precio de envío: ${{ item.shippingPrice }}</p>
-            <button (click)="removeItem(item)" class="text-red-500 mt-2">Eliminar</button>
+            <!--
+            <p class="text-gray-600">Precio de envío: ${{ item.shippingPrice }}</p> -->
+            <!-- <button (click)="removeItem(item)" class="text-red-500 mt-2">Eliminar</button> -->
           </div>
         </div>
       </div>
@@ -31,12 +32,12 @@
       <div class="checkout-card bg-white p-4 shadow-md">
         <h2 class="text-2xl font-bold">Checkout</h2>
         <div class="checkout-details mt-4">
-          <p class="text-gray-600">Cantidad de artículos: {{ calculateTotalQuantity() }}</p>
-          <p class="text-gray-600">Subtotal: ${{ calculateSubtotal() }}</p>
-          <p class="text-gray-600">Costo de envío: ${{ calculateShippingCost() }}</p>
-          <p class="text-2xl font-semibold mt-4">Total: ${{ calculateTotal() }}</p>
+          <p class="text-gray-600">Cantidad de artículos: {{ carrito.length }}</p>
+          <p class="text-gray-600">Subtotal: ${{ subTotal }}</p>
+          <p class="text-gray-600">Costo de envío: ${{ Shipping }}</p>
+          <p class="text-2xl font-semibold mt-4">Total: ${{ total}}</p>
         </div>
-        <button (click)="checkout()" class="bg-blue-500 text-white px-4 py-2 mt-4 rounded">Realizar pedido</button>
+        <button class="bg-blue-500 text-white px-4 py-2 mt-4 rounded">Realizar pedido</button>
       </div>
     </div>
   </div>

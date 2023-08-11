@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
+import { CartService } from 'src/app/services/cart.service';
+import { productCart } from 'src/app/interfaces/productCart.interface';
 
 
 @Component({
@@ -17,7 +19,7 @@ export class NavbarComponent implements OnInit {
   categories: any[] = [];
   isDropdownOpen = false;
   isSidebarOpen = false;
-
+  cart: productCart[];
 
 
   openDropdown() {
@@ -34,12 +36,12 @@ export class NavbarComponent implements OnInit {
   }
 
 
-  constructor(private categoryService: CategoryService, private router: Router) { }
+  constructor(private categoryService: CategoryService,private cartService:CartService, private router: Router) { }
 
 
   ngOnInit(): void {
     this.fetchCategories();
-
+    this.cart= this.cartService.getCarrito()
   }
 
 

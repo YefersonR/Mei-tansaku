@@ -1,0 +1,8 @@
+<div class="rounded-full flex space-x-3 mt-3">
+    <div *ngFor="let category of categories" class="w-37 h-20">
+        <a href="#">
+            <img class="w-36" src="{{ category.urlImage }}" alt="">
+            <p>{{ category.name }}</p>
+        </a>
+    </div>    
+</div>

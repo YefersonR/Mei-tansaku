@@ -48,7 +48,7 @@ const routes: Routes = [
     {path: 'product-page/:id', component: ProductPageComponent},
 
   {
-    path:'categoria',
+    path:'categoria/:id',
     component:PaginaCategoriaComponent
   },
   {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Params } from '@angular/router';
 
 interface Producto {
   id: number;
@@ -24,7 +25,7 @@ export class PaginaCategoriaComponent implements OnInit {
   //  currentPage: number = 1;
   pageSize: number = 115; // Tamaño de cada página
   // totalPages: number = 1; // Número total de páginas
-  categoryId: number = 19; // ID de la categoría (ajusta el valor según tu API)
+  categoryId: number; // ID de la categoría (ajusta el valor según tu API)
 
   //////////////////////////////////////////////////////////////////////////////////////////
   items: any[] = [];
@@ -50,14 +51,15 @@ export class PaginaCategoriaComponent implements OnInit {
   }
   //////////////////////////////////////////////////////////////////////////////////////////
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.obtenerProductos();
+
   }
 
   obtenerProductos() {
     const apiUrl = `http://meitensaku-001-site1.gtempurl.com/api/Category/products?iD=${this.categoryId}&page=${this.currentPage}&pageSize=${this.pageSize}`;
+
     this.http.get<any>(apiUrl).subscribe(
       (data) => {
         this.productos = data.previewProductItem;
