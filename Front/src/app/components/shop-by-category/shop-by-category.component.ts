@@ -20,6 +20,7 @@ export class ShopByCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchCategories();
+    
   }
 
 

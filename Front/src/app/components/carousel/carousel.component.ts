@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from '../../services/category.service';
 
 interface Slide {
   imgSrc: string;
@@ -10,22 +11,24 @@ interface Slide {
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.css']
 })
-export class CarouselComponent {
-  slides: Slide[] = [
-    { imgSrc: 'https://www.tooltyp.com/wp-content/uploads/2014/10/1900x920-8-beneficios-de-usar-imagenes-en-nuestros-sitios-web.jpg', alt: 'Slide 1' },
-    { imgSrc: 'https://media.istockphoto.com/id/1017175098/es/foto/puesta-de-sol-en-la-savana.jpg?s=612x612&w=0&k=20&c=SR9fp6uXn9ldtKZAWAbQsOnO7i2P9yD9BR5mbKAIvNM=', alt: 'Slide 2' },
-    { imgSrc: 'https://thumbs.dreamstime.com/b/tiro-de-arriba-de-la-materia-de-los-hombres-65390781.jpg', alt: 'Slide 3' },
-    // Agregar más objetos de imágenes según sea necesario
-  ];
-  
+export class CarouselComponent implements OnInit{
+  categories: any[] = [];
 
+  constructor(private categoryService: CategoryService) {}
+
+  ngOnInit(): void {
+    this.categoryService.getCategories().subscribe(data => {
+      this.categories = data.slice(14,31);
+
+    })
+  }
   currentSlideIndex: number = 0;
 
   prevSlide() {
-    this.currentSlideIndex = (this.currentSlideIndex - 1 + this.slides.length) % this.slides.length;
+    this.currentSlideIndex = (this.currentSlideIndex - 1 + this.categories.length) % this.categories.length;
   }
 
   nextSlide() {
-    this.currentSlideIndex = (this.currentSlideIndex + 1) % this.slides.length;
+    this.currentSlideIndex = (this.currentSlideIndex + 1) % this.categories.length;
   }
 }

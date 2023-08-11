@@ -1,8 +1,8 @@
-<div class="rounded-full flex space-x-3 mt-3">
-    <div *ngFor="let category of categories" class="w-37 h-20">
-        <a href="#">
-            <img class="w-36" src="{{ category.urlImage }}" alt="">
-            <p>{{ category.name }}</p>
+<div class="flex w-full mt-3">
+    <div *ngFor="let category of categories" class="w-36 h-20">
+      <a [routerLink]="['/categoria', category.id]">
+            <img class="w-24 h-24 rounded-full " src="{{ category.urlImage }}" alt="" clas>
+            <p class="w-4/6 text-center"> {{ category.name }}</p>
         </a>
-    </div>    
+    </div>
 </div>

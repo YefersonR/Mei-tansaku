@@ -1,6 +1,6 @@
 <article class="grid grid-cols-3 gap-4 w-[32rem]">
     <li *ngFor="let category of categories">
-        <a class="block px-4 py-2 hover:bg-gray-200" [routerLink]="['/categoria', category.id]">{{ category.name }}</a>
+        <a class="block px-4 py-2 hover:bg-gray-200" [routerLink]="['/categoria', +category.id]">{{ category.name }}</a>
     </li>
     <hr class="col-span-3">
     <div class="left-80 relative">

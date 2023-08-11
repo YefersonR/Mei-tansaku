@@ -43,7 +43,6 @@ export class CartService {
     const carritoGuardado = localStorage.getItem('carrito');
     if (carritoGuardado) {
       this.carrito = JSON.parse(carritoGuardado);
-      console.log(this.carrito)
     }
     return this.carrito
   }

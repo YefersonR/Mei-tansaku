@@ -17,5 +17,4 @@ export class CategoryService {
     return this.http.get(this.urlApi);
 
   }
-
 }
